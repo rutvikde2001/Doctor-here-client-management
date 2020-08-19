@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "206308812215",
+    "firebase_url": "https://doctor-here.firebaseio.com",
+    "project_id": "doctor-here",
+    "storage_bucket": "doctor-here.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206308812215:android:b69fc1a298262636053432",
+        "android_client_info": {
+          "package_name": "com.project404.doctor_here"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206308812215-6dj8ut62rnm2rlinu4sndkqlof53r8ii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project404.doctor_here",
+            "certificate_hash": "b2a8117de54fb302daa744dda7d6dbde7913bb46"
+          }
+        },
+        {
+          "client_id": "206308812215-epoud979i28qqcf1sgj9e5n06fdr7so3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNCwyhPoyRXuej2lm4Ly0ygAUj1zSitBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206308812215-epoud979i28qqcf1sgj9e5n06fdr7so3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
