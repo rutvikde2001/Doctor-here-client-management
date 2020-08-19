@@ -1,4 +1,5 @@
 import 'package:doctor_here/list_creator/appointmentlist_builder.dart';
+import 'package:doctor_here/list_creator/patientLoglist_builder.dart';
 import 'package:doctor_here/model/appointment.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class _MyDrHomePage extends State<DrHome> {
             body: TabBarView(
               children: <Widget>[
                 AppointmentList(),
-                Text("data"),
+                PatientLogList(),
                 Text("data"),
               ],
             ),

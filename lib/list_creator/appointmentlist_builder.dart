@@ -20,7 +20,7 @@ class _AppointmentListState extends State<AppointmentList> {
           //print(index);
           return AppointmentTile(appointment: appointment[index]);
         } else {
-          return Text("No Appointments Today ");
+          return Container();//Text("No Appointments Today ");
         }
       },
     );

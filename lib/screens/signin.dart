@@ -36,7 +36,8 @@ class SignIn extends StatelessWidget {
           //This callback would gets called when verification is done auto maticlly
         },
         verificationFailed: (AuthException exception) {
-          print("$exception verification failed ${exception.code}. Message: ${exception.message}");
+          print(
+              "$exception verification failed ${exception.code}. Message: ${exception.message}");
         },
         codeSent: (String verificationId, [int forceResendingToken]) {
           showDialog(
