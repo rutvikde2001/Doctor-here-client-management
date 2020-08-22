@@ -1,6 +1,7 @@
-import 'package:doctor_here/screens/doctorHome.dart';
+//import 'package:doctor_here/model/user.dart';
+//import 'package:doctor_here/screens/doctorHome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 //import 'package:doctor_here/model/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -8,7 +9,8 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
 // Sign in through google
-Future<String> signInWithGoogle() async {
+Future<bool> signInWithGoogle() async {
+  bool userSignedIn = await googleSignIn.isSignedIn();
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
@@ -27,7 +29,7 @@ Future<String> signInWithGoogle() async {
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
 
-  return 'signInWithGoogle succeeded: $user';
+  return userSignedIn;
 }
 
 void signOutGoogle() async {

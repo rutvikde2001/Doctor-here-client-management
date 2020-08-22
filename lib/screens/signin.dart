@@ -13,6 +13,7 @@ class SignIn extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _codeController = TextEditingController();
 
+  // ignore: missing_return
   Future<bool> loginUser(String phone, BuildContext context) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -167,14 +168,17 @@ class SignIn extends StatelessWidget {
                 Buttons.GoogleDark,
                 text: "Sign up with Google",
                 onPressed: () {
-                  signInWithGoogle().whenComplete(() {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return DrHome();
-                        },
-                      ),
-                    );
+                  signInWithGoogle().whenComplete(() async {
+                    bool signin = await signInWithGoogle();
+                    if (signin) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return DrHome();
+                          },
+                        ),
+                      );
+                    }
                   });
                 },
               ),
