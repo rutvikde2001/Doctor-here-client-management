@@ -12,8 +12,8 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\debug\AndroidManifest.xml:6:5-66
-14-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\debug\AndroidManifest.xml:6:22-64
+14-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\debug\AndroidManifest.xml:6:22-64
 15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 15-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:24:5-79
 15-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:24:22-76
@@ -31,30 +31,30 @@
 23         FlutterApplication and put your custom class here.
 24    -->
 25    <application
-25-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:8:5-46:19
+25-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:8:5-46:19
 26        android:name="io.flutter.app.FlutterApplication"
-26-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:9:9-57
+26-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:9:9-57
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.1.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\0a88e15c27fe8f45486868f55d363bed\core-1.1.0\AndroidManifest.xml:24:18-86
 28        android:debuggable="true"
 29        android:icon="@mipmap/ic_launcher"
-29-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:11:9-43
+29-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:11:9-43
 30        android:label="doctor_here" >
-30-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:10:9-36
+30-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:10:9-36
 31        <activity
-31-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:12:9-40:20
+31-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:12:9-40:20
 32            android:name="com.project404.doctor_here.MainActivity"
-32-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:13:13-41
+32-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:13:13-41
 33            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-33-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:16:13-163
+33-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:16:13-163
 34            android:hardwareAccelerated="true"
-34-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:17:13-47
+34-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:17:13-47
 35            android:launchMode="singleTop"
-35-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:14:13-43
+35-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:14:13-43
 36            android:theme="@style/LaunchTheme"
-36-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:15:13-47
+36-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:15:13-47
 37            android:windowSoftInputMode="adjustResize" >
-37-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:18:13-55
+37-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:18:13-55
 38
 39            <!--
 40                 Specifies an Android theme to apply to this Activity as soon as
@@ -63,11 +63,11 @@
 43                 to determine the Window background behind the Flutter UI.
 44            -->
 45            <meta-data
-45-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:23:13-26:17
+45-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:23:13-26:17
 46                android:name="io.flutter.embedding.android.NormalTheme"
-46-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:24:15-70
+46-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:24:15-70
 47                android:resource="@style/NormalTheme" />
-47-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:25:15-52
+47-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:25:15-52
 48            <!--
 49                 Displays an Android View that continues showing the launch screen
 50                 Drawable until Flutter paints its first frame, then this splash
@@ -76,21 +76,21 @@
 53                 Flutter's first frame.
 54            -->
 55            <meta-data
-55-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:32:13-35:17
+55-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:32:13-35:17
 56                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-56-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:33:15-79
+56-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:33:15-79
 57                android:resource="@drawable/launch_background" />
-57-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:34:15-61
+57-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:34:15-61
 58
 59            <intent-filter>
-59-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:36:13-39:29
+59-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:36:13-39:29
 60                <action android:name="android.intent.action.MAIN" />
-60-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:37:17-68
-60-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:37:25-66
+60-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:37:17-68
+60-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:37:25-66
 61
 62                <category android:name="android.intent.category.LAUNCHER" />
-62-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:38:17-76
-62-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:38:27-74
+62-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:38:17-76
+62-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:38:27-74
 63            </intent-filter>
 64        </activity>
 65        <!--
@@ -98,38 +98,38 @@
 67             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 68        -->
 69        <meta-data
-69-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:43:9-45:33
+69-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:43:9-45:33
 70            android:name="flutterEmbedding"
-70-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:44:13-44
+70-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:44:13-44
 71            android:value="2" />
-71-->C:\Users\Rutvik\Desktop\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:45:13-30
+71-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:45:13-30
 72
 73        <service
-73-->[:firebase_auth] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+73-->[:firebase_auth] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 74            android:name="com.google.firebase.components.ComponentDiscoveryService"
-74-->[:firebase_auth] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
+74-->[:firebase_auth] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:18-89
 75            android:directBootAware="true"
 75-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
 76            android:exported="false" >
 76-->[com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\42ae81f10aa71a9ece023fce4647b405\play-services-measurement-api-17.5.0\AndroidManifest.xml:29:13-37
 77            <meta-data
-77-->[:firebase_auth] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+77-->[:firebase_auth] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 78                android:name="com.google.firebase.components:io.flutter.plugins.firebaseauth.FlutterFirebaseAppRegistrar"
-78-->[:firebase_auth] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
+78-->[:firebase_auth] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
 79                android:value="com.google.firebase.components.ComponentRegistrar" />
-79-->[:firebase_auth] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+79-->[:firebase_auth] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 80            <meta-data
-80-->[:cloud_firestore] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+80-->[:cloud_firestore] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 81                android:name="com.google.firebase.components:io.flutter.plugins.firebase.cloudfirestore.FlutterFirebaseAppRegistrar"
-81-->[:cloud_firestore] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-133
+81-->[:cloud_firestore] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-133
 82                android:value="com.google.firebase.components.ComponentRegistrar" />
-82-->[:cloud_firestore] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+82-->[:cloud_firestore] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 83            <meta-data
-83-->[:firebase_core] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+83-->[:firebase_core] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 84                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar"
-84-->[:firebase_core] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
+84-->[:firebase_core] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-123
 85                android:value="com.google.firebase.components.ComponentRegistrar" />
-85-->[:firebase_core] C:\Users\Rutvik\Desktop\test404\Doctor here test\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+85-->[:firebase_core] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 86            <meta-data
 86-->[com.google.android.gms:play-services-measurement-api:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\42ae81f10aa71a9ece023fce4647b405\play-services-measurement-api-17.5.0\AndroidManifest.xml:30:13-32:85
 87                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
@@ -156,99 +156,108 @@
 97-->[com.google.firebase:firebase-installations:16.3.2] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\0ab2e7af15821bd2aaebae71b08e932e\firebase-installations-16.3.2\AndroidManifest.xml:19:17-82
 98        </service>
 99
-100        <receiver
-100-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:29:9-33:20
-101            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-101-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:30:13-85
-102            android:enabled="true"
-102-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:31:13-35
-103            android:exported="false" >
-103-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:32:13-37
-104        </receiver>
-105
-106        <service
-106-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:35:9-38:40
-107            android:name="com.google.android.gms.measurement.AppMeasurementService"
-107-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:36:13-84
-108            android:enabled="true"
-108-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:37:13-35
-109            android:exported="false" />
-109-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:38:13-37
-110        <service
-110-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:39:9-43:72
-111            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-111-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:40:13-87
-112            android:enabled="true"
-112-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:41:13-35
-113            android:exported="false"
-113-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:42:13-37
-114            android:permission="android.permission.BIND_JOB_SERVICE" />
-114-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:43:13-69
-115
-116        <activity
-116-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:24:9-31:50
-117            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
-117-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:25:13-85
-118            android:excludeFromRecents="true"
-118-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:26:13-46
-119            android:exported="true"
-119-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:27:13-36
-120            android:launchMode="singleTask"
-120-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:28:13-44
-121            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
-121-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:29:13-102
-122            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-122-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:30:13-72
-123
-124        <provider
-124-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
-125            android:name="com.google.firebase.provider.FirebaseInitProvider"
-125-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
-126            android:authorities="com.project404.doctor_here.firebaseinitprovider"
-126-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
-127            android:exported="false"
-127-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
-128            android:initOrder="100" />
-128-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
-129
-130        <activity
-130-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
-131            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-131-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
-132            android:excludeFromRecents="true"
-132-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
-133            android:exported="false"
-133-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
-134            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-134-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
-135        <!--
-136            Service handling Google Sign-In user revocation. For apps that do not integrate with
-137            Google Sign-In, this service will never be started.
-138        -->
-139        <service
-139-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
-140            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-140-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
-141            android:exported="true"
-141-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
-142            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
-142-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
-143
-144        <activity
-144-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
-145            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-145-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
-146            android:exported="false"
-146-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
-147            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-147-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+100        <activity
+100-->[:url_launcher] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-11:74
+101            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+101-->[:url_launcher] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-74
+102            android:exported="false"
+102-->[:url_launcher] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:10:13-37
+103            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+103-->[:url_launcher] C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\build\url_launcher\intermediates\library_manifest\debug\AndroidManifest.xml:11:13-71
+104
+105        <receiver
+105-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:29:9-33:20
+106            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+106-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:30:13-85
+107            android:enabled="true"
+107-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:31:13-35
+108            android:exported="false" >
+108-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:32:13-37
+109        </receiver>
+110
+111        <service
+111-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:35:9-38:40
+112            android:name="com.google.android.gms.measurement.AppMeasurementService"
+112-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:36:13-84
+113            android:enabled="true"
+113-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:37:13-35
+114            android:exported="false" />
+114-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:38:13-37
+115        <service
+115-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:39:9-43:72
+116            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+116-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:40:13-87
+117            android:enabled="true"
+117-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:41:13-35
+118            android:exported="false"
+118-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:42:13-37
+119            android:permission="android.permission.BIND_JOB_SERVICE" />
+119-->[com.google.android.gms:play-services-measurement:17.5.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\b554b02f0ea3a805655c0960b422e6fe\play-services-measurement-17.5.0\AndroidManifest.xml:43:13-69
+120
+121        <activity
+121-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:24:9-31:50
+122            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+122-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:25:13-85
+123            android:excludeFromRecents="true"
+123-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:26:13-46
+124            android:exported="true"
+124-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:27:13-36
+125            android:launchMode="singleTask"
+125-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:28:13-44
+126            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+126-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:29:13-102
+127            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+127-->[com.google.firebase:firebase-auth:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\eb53a906cac7143cdb3d350f0809024e\jetified-firebase-auth-17.0.0\AndroidManifest.xml:30:13-72
+128
+129        <provider
+129-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+130            android:name="com.google.firebase.provider.FirebaseInitProvider"
+130-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+131            android:authorities="com.project404.doctor_here.firebaseinitprovider"
+131-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+132            android:exported="false"
+132-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+133            android:initOrder="100" />
+133-->[com.google.firebase:firebase-common:19.3.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\bd3c11c9424cbc7618efb2af239f58fe\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+134
+135        <activity
+135-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:23:9-27:75
+136            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+136-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:24:13-93
+137            android:excludeFromRecents="true"
+137-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:25:13-46
+138            android:exported="false"
+138-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:26:13-37
+139            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+139-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:27:13-72
+140        <!--
+141            Service handling Google Sign-In user revocation. For apps that do not integrate with
+142            Google Sign-In, this service will never be started.
+143        -->
+144        <service
+144-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:33:9-36:110
+145            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+145-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:34:13-89
+146            android:exported="true"
+146-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:35:13-36
+147            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+147-->[com.google.android.gms:play-services-auth:16.0.1] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\1356be6da6ca5ef1ca7a72290de8368c\jetified-play-services-auth-16.0.1\AndroidManifest.xml:36:13-107
 148
-149        <meta-data
-149-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\5549607e42abad1c5f3cc4db3cf5b290\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-150            android:name="com.google.android.gms.version"
-150-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\5549607e42abad1c5f3cc4db3cf5b290\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-151            android:value="@integer/google_play_services_version" />
-151-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\5549607e42abad1c5f3cc4db3cf5b290\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-152    </application>
+149        <activity
+149-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+150            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+150-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+151            android:exported="false"
+151-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+152            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+152-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\93131e36cbd141853f280b19c75d4cd9\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
 153
-154</manifest>
+154        <meta-data
+154-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\5549607e42abad1c5f3cc4db3cf5b290\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+155            android:name="com.google.android.gms.version"
+155-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\5549607e42abad1c5f3cc4db3cf5b290\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+156            android:value="@integer/google_play_services_version" />
+156-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\5549607e42abad1c5f3cc4db3cf5b290\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+157    </application>
+158
+159</manifest>

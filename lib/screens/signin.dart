@@ -1,4 +1,7 @@
+//import 'package:doctor_here/model/user.dart';
+import 'package:doctor_here/screens/Register/ask.dart';
 import 'package:doctor_here/screens/doctorHome.dart';
+import 'package:doctor_here/screens/patientHome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +9,7 @@ import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:doctor_here/services/auth.dart';
 import 'dart:async';
+import 'package:doctor_here/services/database.dart';
 
 /// This Widget is the main application widget.
 class SignIn extends StatelessWidget {
@@ -21,15 +25,26 @@ class SignIn extends StatelessWidget {
         phoneNumber: phone,
         timeout: Duration(seconds: 60),
         verificationCompleted: (AuthCredential credential) async {
-          Navigator.of(context).pop();
+          //Navigator.of(context).pop();
 
           AuthResult result = await _auth.signInWithCredential(credential);
 
           FirebaseUser user = result.user;
-
+          var check = await userTypeCheck();
           if (user != null) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => DrHome()));
+            // ignore: unrelated_type_equality_checks
+            if (check == 'doctor') {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => DrHome()));
+              // ignore: unrelated_type_equality_checks
+            } else if (check == "patient") {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => PtHome()));
+              // ignore: unrelated_type_equality_checks
+            } else if (check == "no") {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Ask()));
+            }
           } else {
             print("Error");
           }
@@ -39,6 +54,7 @@ class SignIn extends StatelessWidget {
         verificationFailed: (AuthException exception) {
           print(
               "$exception verification failed ${exception.code}. Message: ${exception.message}");
+          AlertDialog(title: Text("Invalide verification code"));
         },
         codeSent: (String verificationId, [int forceResendingToken]) {
           showDialog(
@@ -70,14 +86,29 @@ class SignIn extends StatelessWidget {
                             await _auth.signInWithCredential(credential);
 
                         FirebaseUser user = result.user;
-
+                        var check = userTypeCheck();
                         if (user != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DrHome()));
+                          // ignore: unrelated_type_equality_checks
+                          if (check == "no") {
+                            Navigator.pushReplacement(context,
+                                MaterialPageRoute(builder: (context) => Ask()));
+                            // ignore: unrelated_type_equality_checks
+                          } else if (check == "patient") {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PtHome()));
+                            // ignore: unrelated_type_equality_checks
+                          } else if (check == "doctor") {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DrHome()));
+                          }
                         } else {
                           print("Error");
+                          AlertDialog(
+                              title: Text("Invalide verification code"));
                         }
                       },
                     )
@@ -170,14 +201,25 @@ class SignIn extends StatelessWidget {
                 onPressed: () {
                   signInWithGoogle().whenComplete(() async {
                     bool signin = await signInWithGoogle();
+                    //print(signin);
+                    var check = await userTypeCheck();
                     if (signin) {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return DrHome();
-                          },
-                        ),
-                      );
+                      //print(check);
+                      // ignore: unrelated_type_equality_checks
+                      if (check == "no") {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => Ask()));
+                        //print("3");
+                        // ignore: unrelated_type_equality_checks
+                      } else if (check == "patient") {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => PtHome()));
+                        //print("2");
+                      } else if (check == "doctor") {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => DrHome()));
+                        //print("1");
+                      }
                     }
                   });
                 },
