@@ -3,6 +3,8 @@ import 'package:doctor_here/list_creator/ambulancelist_builder.dart';
 import 'package:doctor_here/list_creator/pharmacieslist_builder.dart';
 import 'package:doctor_here/model/ambulance.dart';
 import 'package:doctor_here/model/pharmacies.dart';
+import 'package:doctor_here/screens/CreateAppointment.dart';
+import 'package:doctor_here/screens/patientSettings.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +43,9 @@ class _MyPtHomePage extends State<PtHome> {
                           print("search");
                           signOut();
                           Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => SignIn()));
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignIn()));
                         },
                       ),
                       PopupMenuButton<String>(
@@ -99,6 +103,10 @@ class _MyPtHomePage extends State<PtHome> {
                     onPressed: () {
                       // Add your onPressed code here!
                       print("new appointment");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CreateAppointment()));
                     },
                     child: Container(
                       width: 60,
@@ -125,6 +133,8 @@ class _MyPtHomePage extends State<PtHome> {
   void choiceAction(String choice) {
     if (choice == Constants.Settings) {
       print("Settings");
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => PatSetting()));
     } else if (choice == Constants.Location) {
       print("Location");
     } else if (choice == Constants.Notifications) {
