@@ -9,8 +9,12 @@ class AppointmentTile extends StatelessWidget {
   Widget build(BuildContext context) {
     var date = appointment.date;
     var name = appointment.name.toUpperCase().split(" ");
-    var n = name[0].split('');
-    var s = name[1].split('');
+    var n = '';
+    try {
+      n = name[0].substring(0, 1) + name[1].substring(0, 1);
+    } catch (Exception) {
+      n = name[0].substring(0, 1);
+    }
     var now = DateTime.now();
     String today = DateFormat('dd/MM/yyyy').format(now);
     if (date == today) {
@@ -22,8 +26,7 @@ class AppointmentTile extends StatelessWidget {
             leading: CircleAvatar(
               radius: 25.0,
               backgroundColor: Colors.grey,
-              child:
-                  Text(n[0] + s[0], style: TextStyle(color: Colors.lightBlue)),
+              child: Text(n, style: TextStyle(color: Colors.lightBlue)),
             ),
             title:
                 Text(appointment.name, style: TextStyle(color: Colors.black)),

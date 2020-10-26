@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_here/model/appointment.dart';
+import 'package:doctor_here/model/clinic.dart';
 import 'package:doctor_here/model/pharmacies.dart';
 import 'package:doctor_here/model/user.dart';
 import 'package:doctor_here/model/ambulance.dart';
@@ -18,6 +19,9 @@ class DatabaseService {
 
   final CollectionReference ambulanceCollection =
       Firestore.instance.collection('ambulance');
+
+  final CollectionReference clinicCollection =
+      Firestore.instance.collection('doctor');
 
   final CollectionReference pharmaciesCollection =
       Firestore.instance.collection('pharmacies');
@@ -67,6 +71,26 @@ class DatabaseService {
   Stream<List<Ambulance>> get ambulance {
     return ambulanceCollection.snapshots().map(_ambulanceListFromSnapshot);
   }
+
+  List<Clinic> _clinicListFromSnapshot(QuerySnapshot snapshot) {
+    return snapshot.documents.map((doc) {
+      return Clinic(
+          drname: doc.data['name'] ?? 'XYZ',
+          phone: doc.data['contact no'] ?? '0000000000',
+          pincode: doc.data['pincode'] ?? '400000',
+          clinicname: doc.data['clinic name'] ?? 'ABC',
+          address: doc.data['clinic address'] ?? 'x,y,z',
+          speciality: doc.data['speciality'] ?? 'doctor',
+          );
+    }).toList();
+  }
+
+  Stream<List<Clinic>> get clinic {
+    return clinicCollection.snapshots().map(_clinicListFromSnapshot);
+  }
+
+
+
 
   List<Pharmacies> _pharmaciesListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {

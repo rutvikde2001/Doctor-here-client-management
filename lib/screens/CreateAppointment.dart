@@ -7,11 +7,39 @@ class CreateAppointment extends StatefulWidget {
 }
 
 class _CreateAppointmentState extends State<CreateAppointment> {
-
   String patName = '';
-  String timeSlot = '';
   String number = '';
   String remarks = '';
+
+  DateTime pickedDate;
+  TimeOfDay time;
+  @override
+  void initState() {
+    super.initState();
+    pickedDate = DateTime.now();
+    time = TimeOfDay.now();
+  }
+   _pickDate() async {
+      DateTime date = await showDatePicker(
+        context: context,
+        firstDate: DateTime(DateTime.now().year),
+        lastDate: DateTime(DateTime.now().year + 2),
+        initialDate: pickedDate,
+      );
+      if (date != null)
+        setState(() {
+          pickedDate = date;
+        });
+    }
+
+    _pickTime() async {
+      TimeOfDay t = await showTimePicker(context: context, initialTime: time);
+      if (t != null)
+        setState(() {
+          time = t;
+        });
+    }
+    
 
   @override
   Widget build(BuildContext context) {
@@ -21,52 +49,62 @@ class _CreateAppointmentState extends State<CreateAppointment> {
         backgroundColorStart: Colors.blue[900],
         backgroundColorEnd: Colors.blue[500],
         title: Text('Create Appointment'),
-        centerTitle: true,),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
-              child: Container(
+        child: Container(
           padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 50.0),
           child: Form(
             child: Column(
               children: <Widget>[
                 SizedBox(height: 20.0),
                 TextFormField(
-                  onChanged: (val){
+                  onChanged: (val) {
                     patName = val;
-                    return("$patName");
+                    return ("$patName");
                   },
-                  decoration: InputDecoration(
-                      labelText: 'Enter Patient Name'
-                  ),
+                  decoration: InputDecoration(labelText: 'Enter Patient Name'),
                 ),
                 SizedBox(height: 20.0),
+                // TextFormField(
+                //   onChanged: (val){
+                //     timeSlot = val;
+                //     return("$timeSlot");
+                //   },
+                //   decoration: InputDecoration(
+                //       labelText: 'Enter Timeslot'
+                //   ),
+                // ),
+                
                 TextFormField(
-                  onChanged: (val){
-                    timeSlot = val;
-                    return("$timeSlot");
-                  },
-                  decoration: InputDecoration(
-                      labelText: 'Enter Timeslot'
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                TextFormField(
-                  onChanged: (val){
+                  onChanged: (val) {
                     number = val;
-                    return('$number');
+                    return ('$number');
                   },
-                  decoration: InputDecoration(
-                      labelText: 'Enter Contact Number'
-                  ),
+                  decoration:
+                      InputDecoration(labelText: 'Enter Contact Number'),
+                ),
+                SizedBox(height: 20.0),
+                ListTile(
+                  title: Text(
+                      "Select Date: ${pickedDate.day}/${pickedDate.month}/${pickedDate.year}"),
+                  trailing: Icon(Icons.keyboard_arrow_down),
+                  onTap: _pickDate,
+                ),
+                SizedBox(height: 20.0),
+                ListTile(
+                  title: Text(" Select Time: ${time.hour}:${time.minute}"),
+                  trailing: Icon(Icons.keyboard_arrow_down),
+                  
+                  onTap: _pickTime,
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
-                  onChanged: (val){
+                  onChanged: (val) {
                     remarks = val;
-                    return("$remarks");
+                    return ("$remarks");
                   },
-                  decoration: InputDecoration(
-                      labelText: 'Remarks'
-                  ),
+                  decoration: InputDecoration(labelText: 'Remarks'),
                 ),
                 SizedBox(height: 20.0),
                 Padding(
@@ -86,7 +124,10 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                           bottomRight: Radius.circular(30.0)),
                     ),
                     child: FlatButton(
-                      child: Text('Create', style: TextStyle(color: Colors.white, fontSize:20),),
+                      child: Text(
+                        'Create',
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
                       onPressed: () {},
                     ),
                   ),
@@ -97,5 +138,6 @@ class _CreateAppointmentState extends State<CreateAppointment> {
         ),
       ),
     );
+   
   }
 }
