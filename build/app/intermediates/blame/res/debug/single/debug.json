@@ -4,6 +4,10 @@
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\0a88e15c27fe8f45486868f55d363bed\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_low_normal.9.png"
     },
     {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_launcher_icon.png.flat",
+        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-hdpi\\launcher_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light_normal.xml.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable\\common_google_signin_btn_text_light_normal.xml"
     },
@@ -24,12 +28,12 @@
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
     },
     {
-        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_googleg_standard_color_18.png.flat",
-        "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable-hdpi-v4\\googleg_standard_color_18.png"
-    },
-    {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable-xhdpi-v4\\common_google_signin_btn_icon_dark_normal_background.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_googleg_standard_color_18.png.flat",
+        "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable-hdpi-v4\\googleg_standard_color_18.png"
     },
     {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_standard_color_18.png.flat",
@@ -44,12 +48,12 @@
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable-xhdpi-v4\\common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
-        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_light_normal.xml.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\1356be6da6ca5ef1ca7a72290de8368c\\jetified-play-services-auth-16.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_light_normal.xml"
+    },
+    {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_custom_big.xml.flat",
@@ -140,6 +144,10 @@
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },
     {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_launcher_icon.png.flat",
+        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\launcher_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_disabled.xml.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\drawable\\common_google_signin_btn_text_disabled.xml"
     },
@@ -160,12 +168,20 @@
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\0a88e15c27fe8f45486868f55d363bed\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
     },
     {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_launcher_icon.png.flat",
+        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-mdpi\\launcher_icon.png"
+    },
+    {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\color_common_google_signin_btn_text_light.xml.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\93131e36cbd141853f280b19c75d4cd9\\play-services-base-17.0.0\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_disabled.xml.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\1356be6da6ca5ef1ca7a72290de8368c\\jetified-play-services-auth-16.0.1\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_launcher_icon.png.flat",
+        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-xhdpi\\launcher_icon.png"
     },
     {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_light_focused.xml.flat",
@@ -254,6 +270,10 @@
     {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
         "source": "C:\\Users\\Rutvik\\.gradle\\caches\\transforms-2\\files-2.1\\0a88e15c27fe8f45486868f55d363bed\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_launcher_icon.png.flat",
+        "source": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\launcher_icon.png"
     },
     {
         "merged": "C:\\Users\\Rutvik\\Desktop\\project files\\test404\\Doctor here test\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",

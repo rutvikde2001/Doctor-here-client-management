@@ -37,9 +37,9 @@
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.1.0] C:\Users\Rutvik\.gradle\caches\transforms-2\files-2.1\0a88e15c27fe8f45486868f55d363bed\core-1.1.0\AndroidManifest.xml:24:18-86
 28        android:debuggable="true"
-29        android:icon="@mipmap/ic_launcher"
-29-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:11:9-43
-30        android:label="doctor_here" >
+29        android:icon="@mipmap/launcher_icon"
+29-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:11:9-45
+30        android:label="Doctor Here" >
 30-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:10:9-36
 31        <activity
 31-->C:\Users\Rutvik\Desktop\project files\test404\Doctor here test\android\app\src\main\AndroidManifest.xml:12:9-40:20

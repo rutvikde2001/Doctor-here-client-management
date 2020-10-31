@@ -28,7 +28,7 @@ class ClinicTile extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.lightBlue, fontWeight: FontWeight.bold)),
           ),
-          title: Text(clinic.clinicname + "- " + clinic.drname,
+          title: Text(clinic.drname.toUpperCase() + "- " + clinic.clinicname,
               style: TextStyle(color: Colors.black)),
           subtitle: Text(
               'Speciality: ${clinic.speciality}\nAddress: ${clinic.address}',

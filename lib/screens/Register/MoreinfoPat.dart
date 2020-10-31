@@ -12,7 +12,8 @@ class MoreInfoUser extends StatefulWidget {
 class _MoreInfoUserState extends State<MoreInfoUser> {
   String name = '';
   final _nameController = TextEditingController();
-  var phoneNo;
+  var phoneno;
+  final _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,26 +31,21 @@ class _MoreInfoUserState extends State<MoreInfoUser> {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Text('Patient Info',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
+                Text(
+                  'Patient Info',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
-                  onChanged: (val) {
-                    name = val;
-                    return ("$name");
-                  },
+                  controller: _nameController,
                   decoration: InputDecoration(labelText: 'Enter Full Name'),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
-                  onChanged: (val) {
-                    phoneNo = val;
-                    return ("$phoneNo");
-                  },
+                  controller: _phoneController,
                   decoration: InputDecoration(labelText: 'Enter Phone number'),
                 ),
                 SizedBox(
@@ -77,9 +73,16 @@ class _MoreInfoUserState extends State<MoreInfoUser> {
                     onPressed: () async {
                       UserData(name: _nameController.text);
                       await updateUserData(_nameController.text, "patient")
-                          .then((value) {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => PtHome()));
+                          .then((value) async {
+                        await updatePatData(
+                          _nameController.text,
+                          _phoneController.text,
+                        ).then((value) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PtHome()));
+                        });
                       });
                     },
                   ),
