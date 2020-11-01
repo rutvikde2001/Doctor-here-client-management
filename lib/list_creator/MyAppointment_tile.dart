@@ -10,10 +10,17 @@ class MyAppointmentTile extends StatelessWidget {
     var date = myappointment.date;
     var name = myappointment.name.toUpperCase().split(" ");
     var n = '';
+    var names = myappointment.name.split(" ");
+    var ns = '';
     try {
       n = name[0].substring(0, 1) + name[1].substring(0, 1);
     } catch (Exception) {
       n = name[0].substring(0, 1);
+    }
+    try{
+      ns = names[0].substring(0, 1).toUpperCase() + names[0].substring(1) +" "+ names[1].substring(0, 1).toUpperCase() + names[1].substring(1);
+    }catch(Exception){
+      ns = names[0].substring(0, 1).toUpperCase() + names[0].substring(1);
     }
     return Padding(
       padding: EdgeInsets.only(top: 8.0),
@@ -22,15 +29,15 @@ class MyAppointmentTile extends StatelessWidget {
         child: ListTile(
           leading: CircleAvatar(
             radius: 25.0,
-            backgroundColor: Colors.grey,
-            child: Text(n, style: TextStyle(color: Colors.lightBlue)),
+            backgroundColor: Colors.blueGrey,
+            child: Text(n, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold )),
           ),
-          title: Text(myappointment.drname + " : " + myappointment.name,
+          title: Text("Dr. "+myappointment.drname.toUpperCase() + "\nPatient:" + ns,
               style: TextStyle(color: Colors.black)),
           subtitle: Text('Time: ' + myappointment.time + ' Date:' + date,
               style: TextStyle(color: Colors.black)),
           onTap: () {
-            print("${myappointment.name}");
+            print("${myappointment.drname}");
           },
         ),
       ),

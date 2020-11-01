@@ -5,5 +5,13 @@ class Clinic {
   final String speciality;
   final String phone;
   final String pincode;
-  Clinic({this.drname,this.clinicname, this.address, this.speciality, this.phone, this.pincode});
+  final String timing;
+  Clinic(
+      {this.drname,
+      this.clinicname,
+      this.address,
+      this.speciality,
+      this.phone,
+      this.pincode,
+      this.timing});
 }

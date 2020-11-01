@@ -7,9 +7,9 @@ import 'package:doctor_here/model/ambulance.dart';
 import 'package:doctor_here/model/clinic.dart';
 import 'package:doctor_here/model/myappointment.dart';
 import 'package:doctor_here/model/pharmacies.dart';
-import 'package:doctor_here/screens/CreateAppointment.dart';
+//import 'package:doctor_here/screens/CreateAppointment.dart';
 import 'package:doctor_here/screens/patientSettings.dart';
-import 'package:doctor_here/screens/signin.dart';
+
 import 'package:doctor_here/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -49,12 +49,6 @@ class _MyPtHomePage extends State<PtHome> {
                             icon: Icon(Icons.search),
                             onPressed: () {
                               print("search");
-                              signOutGoogle();
-                              signOut();
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignIn()));
                             },
                           ),
                           PopupMenuButton<String>(
@@ -82,7 +76,7 @@ class _MyPtHomePage extends State<PtHome> {
                               child: Text("Pharmacies"),
                             ),
                             Tab(
-                              child: Icon(
+                             child: Icon(
                                 Icons.local_hospital,
                                 color: Colors.red[500],
                                 size: 40,

@@ -4,6 +4,7 @@ import 'package:doctor_here/model/appointment.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/services/auth.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
+import 'package:doctor_here/screens/CreateAppointment.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:provider/provider.dart';
@@ -76,6 +77,9 @@ class _MyDrHomePage extends State<DrHome> {
               onPressed: () {
                 // Add your onPressed code here!
                 print("new appointment ");
+                Navigator.push(
+          context, MaterialPageRoute(builder: (context) => CreateAppointment()));
+
               },
               child: Container(
                 width: 60,

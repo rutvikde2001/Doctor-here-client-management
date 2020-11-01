@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:doctor_here/screens/signin.dart';
+import 'package:doctor_here/services/auth.dart';
 
 class PatSetting extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -67,6 +69,12 @@ class PatSetting extends StatelessWidget {
                     trailing: Icon(Icons.first_page),
                     onTap: () {
                       // About Developer Info
+                      signOutGoogle();
+                              signOut();
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignIn()));
                     },
                   )
                 ]))

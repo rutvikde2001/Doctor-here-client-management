@@ -25,8 +25,8 @@ class AppointmentTile extends StatelessWidget {
           child: ListTile(
             leading: CircleAvatar(
               radius: 25.0,
-              backgroundColor: Colors.grey,
-              child: Text(n, style: TextStyle(color: Colors.lightBlue)),
+              backgroundColor: Colors.blueGrey,
+              child: Text(n, style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)),
             ),
             title:
                 Text(appointment.name, style: TextStyle(color: Colors.black)),

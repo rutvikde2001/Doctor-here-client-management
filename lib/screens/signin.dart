@@ -62,7 +62,7 @@ class SignIn extends StatelessWidget {
               barrierDismissible: false,
               builder: (context) {
                 return AlertDialog(
-                  title: Text("Give the code?"),
+                  title: Text("Enter OTP: "),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
