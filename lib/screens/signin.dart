@@ -34,10 +34,12 @@ class SignIn extends StatelessWidget {
           if (user != null) {
             // ignore: unrelated_type_equality_checks
             if (check == 'doctor') {
+              getUid();
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => DrHome()));
               // ignore: unrelated_type_equality_checks
             } else if (check == "patient") {
+              getUid();
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => PtHome()));
               // ignore: unrelated_type_equality_checks
@@ -212,10 +214,12 @@ class SignIn extends StatelessWidget {
                         //print("3");
                         // ignore: unrelated_type_equality_checks
                       } else if (check == "patient") {
+                        getUid();
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => PtHome()));
                         //print("2");
                       } else if (check == "doctor") {
+                        getUid();
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => DrHome()));
                         //print("1");

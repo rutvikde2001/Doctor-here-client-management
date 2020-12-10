@@ -25,7 +25,7 @@ class AmbulanceTile extends StatelessWidget {
           subtitle: Text('Phone No. ${ambulance.phone}',
               style: TextStyle(color: Colors.black)),
           onTap: () {
-            String no = "tel:+91" + ambulance.phone.toString();
+            String no = "tel:0" + ambulance.phone.toString();
             launch(no);
           },
         ),

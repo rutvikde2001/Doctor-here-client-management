@@ -1,6 +1,7 @@
 import 'package:doctor_here/list_creator/appointmentlist_builder.dart';
 import 'package:doctor_here/list_creator/patientLoglist_builder.dart';
 import 'package:doctor_here/model/appointment.dart';
+import 'package:doctor_here/screens/doctorSettings.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/services/auth.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
@@ -19,6 +20,7 @@ class DrHome extends StatefulWidget {
 }
 
 class _MyDrHomePage extends State<DrHome> {
+  // ignore: unused_element
   _MyDrHomePage([Appointment appointment]);
   //var date = Appointment().date;
   Widget build(BuildContext context) {
@@ -43,12 +45,10 @@ class _MyDrHomePage extends State<DrHome> {
                   label: Text(''),
                   onPressed: () {
                     print("search");
-                    signOutGoogle();
-                    Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => SignIn()));
-                  },
+                  //   signOutGoogle();
+                  //   Navigator.pushReplacement(context,
+                  //       MaterialPageRoute(builder: (context) => SignIn()));
+                   },
                 )
               ],
               bottom: TabBar(
@@ -70,7 +70,7 @@ class _MyDrHomePage extends State<DrHome> {
               children: <Widget>[
                 AppointmentList(),
                 PatientLogList(),
-                Text("data"),
+                DrSetting(),
               ],
             ),
             floatingActionButton: FloatingActionButton(
@@ -78,8 +78,9 @@ class _MyDrHomePage extends State<DrHome> {
                 // Add your onPressed code here!
                 print("new appointment ");
                 Navigator.push(
-          context, MaterialPageRoute(builder: (context) => CreateAppointment()));
-
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CreateAppointment()));
               },
               child: Container(
                 width: 60,

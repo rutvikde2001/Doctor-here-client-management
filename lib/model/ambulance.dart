@@ -1,6 +1,6 @@
 class Ambulance {
   final String name;
-  final int phone;
-  final int pincode;
+  final String phone;
+  final String pincode;
   Ambulance({this.name, this.phone, this.pincode});
 }

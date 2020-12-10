@@ -42,27 +42,33 @@ class DatabaseService {
   final CollectionReference pharmaciesCollection =
       Firestore.instance.collection('pharmacies');
 
-  Future updateAppointmentData(String name, String time, String date) async {
+  Future updateAppointmentData(
+      String name, String time, String date, String druid) async {
     getUid();
-    return await Firestore.instance.collection('doctor/ebyD7i0Xqk7joFlqAh0x/patient log')
+    return await Firestore.instance
+        .collection('doctor/$druid/patient log')
         .document(uid)
         .setData({'name': name, 'time': time, 'date': date});
   }
 
   //  list from snapshot
   List<Appointment> _appointmentListFromSnapshot(QuerySnapshot snapshot) {
-    //getUid();
+    getUid();
     return snapshot.documents.map((doc) {
       return Appointment(
           name: doc.data['name'] ?? '',
           time: doc.data['time'] ?? '0:00AM',
-          date: doc.data['date'] ?? '1/1/2020');
+          date: doc.data['date'] ?? '01/01/2020');
     }).toList();
   }
 
   // Get brews stream
   Stream<List<Appointment>> get appointment {
-    return Firestore.instance.collection('doctor/ebyD7i0Xqk7joFlqAh0x/patient log').snapshots().map(_appointmentListFromSnapshot);
+    getUid();
+    return Firestore.instance
+        .collection('doctor/$ud/patient log')
+        .snapshots()
+        .map(_appointmentListFromSnapshot);
   }
 
   // UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
@@ -80,11 +86,11 @@ class DatabaseService {
     //print(ud);
     return snapshot.documents.map((doc) {
       return MyAppointment(
-          name: doc.data['name'] ?? '',
-          time: doc.data['time'] ?? '0:00AM',
-          date: doc.data['date'] ?? '1/1/2020',
-          drname: doc.data['drname'] ?? 'abc',
-          );
+        name: doc.data['name'] ?? '',
+        time: doc.data['time'] ?? '0:00AM',
+        date: doc.data['date'] ?? '1/1/2020',
+        drname: doc.data['drname'] ?? 'abc',
+      );
     }).toList();
   }
 
@@ -93,7 +99,7 @@ class DatabaseService {
     getUid();
     return Firestore.instance
         .collection('patient')
-        .document('FQsnQchfn0Suw95Gxq3Fc902ALR2')
+        .document(ud)
         .collection('my appointment')
         .snapshots()
         .map(_myappointmentListFromSnapshot);
@@ -103,8 +109,8 @@ class DatabaseService {
     return snapshot.documents.map((doc) {
       return Ambulance(
           name: doc.data['name'] ?? 'XYZ',
-          phone: doc.data['phone'] ?? 0000000000,
-          pincode: doc.data['date'] ?? 400000);
+          phone: doc.data['phone'] ?? '0000000000',
+          pincode: doc.data['pincode'] ?? '400000');
     }).toList();
   }
 
@@ -121,7 +127,7 @@ class DatabaseService {
           clinicname: doc.data['clinic name'] ?? 'ABC',
           address: doc.data['clinic address'] ?? 'x,y,z',
           speciality: doc.data['speciality'] ?? 'doctor',
-          timing: doc.data['time'] ?? '0:00AM');
+          timing: doc.data['clinic timing'] ?? '0:00AM');
     }).toList();
   }
 
@@ -133,10 +139,10 @@ class DatabaseService {
     return snapshot.documents.map((doc) {
       return Pharmacies(
           name: doc.data['name'] ?? 'XYZ',
-          phone: doc.data['phone'] ?? 0000000000,
-          pincode: doc.data['date'] ?? 400000,
+          phone: doc.data['phone no.'] ?? '0000000000',
+          pincode: doc.data['pincode'] ?? '400000',
           address: doc.data['address'] ?? '',
-          timing: doc.data['timing'] ?? '0:00 to 0:00');
+          timing: doc.data['timing'] ?? '0:00AM-0:00AM');
     }).toList();
   }
 

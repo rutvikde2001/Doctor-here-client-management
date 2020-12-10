@@ -17,7 +17,7 @@ class PharmaciesTile extends StatelessWidget {
             radius: 25.0,
             backgroundColor: Colors.lightGreen,
             child: Icon(
-              Icons.local_hospital ,
+              Icons.local_hospital,
               size: 45,
               color: Colors.red,
             ),
@@ -28,7 +28,7 @@ class PharmaciesTile extends StatelessWidget {
               style: TextStyle(color: Colors.black)),
           isThreeLine: true,
           onTap: () {
-            String no = "tel:+91" + pharmacies.phone.toString();
+            String no = "tel:0" + pharmacies.phone.toString();
             launch(no);
           },
         ),
