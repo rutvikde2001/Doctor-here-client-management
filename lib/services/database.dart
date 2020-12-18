@@ -3,17 +3,31 @@ import 'package:doctor_here/model/appointment.dart';
 import 'package:doctor_here/model/clinic.dart';
 import 'package:doctor_here/model/myappointment.dart';
 import 'package:doctor_here/model/pharmacies.dart';
+import 'package:doctor_here/model/schedule.dart';
 import 'package:doctor_here/model/user.dart';
 import 'package:doctor_here/model/ambulance.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:random_string/random_string.dart';
 
-String ud;
+String ud, druid;
 getUid() async {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final FirebaseUser user = await auth.currentUser();
   //print(user.uid.toString());
   ud = user.uid.toString();
   print(ud);
+}
+
+getDocUid(String drname) async {
+  var result = await Firestore.instance
+      .collection("users")
+      .where("name", isEqualTo: "$drname")
+      .where("user type", isEqualTo: "doctor")
+      .getDocuments();
+
+  result.documents.forEach((res) {
+    if (res.data["uid"] != null) druid = res.data["uid"];
+  });
 }
 
 class DatabaseService {
@@ -42,15 +56,6 @@ class DatabaseService {
   final CollectionReference pharmaciesCollection =
       Firestore.instance.collection('pharmacies');
 
-  Future updateAppointmentData(
-      String name, String time, String date, String druid) async {
-    getUid();
-    return await Firestore.instance
-        .collection('doctor/$druid/patient log')
-        .document(uid)
-        .setData({'name': name, 'time': time, 'date': date});
-  }
-
   //  list from snapshot
   List<Appointment> _appointmentListFromSnapshot(QuerySnapshot snapshot) {
     getUid();
@@ -71,6 +76,28 @@ class DatabaseService {
         .map(_appointmentListFromSnapshot);
   }
 
+  List<Schedule> _scheduleListFromSnapshot(QuerySnapshot snapshot) {
+    getUid();
+    return snapshot.documents.map((doc) {
+      return Schedule(
+          name: doc.data['name'] ?? '',
+          time: doc.data['time'] ?? '0:00AM',
+          date: doc.data['date'] ?? '01/01/2020');
+    }).toList();
+  }
+
+  // Get brews stream
+  Stream<List<Schedule>> get schedule {
+    getUid();
+    if (druid != null) {
+      return Firestore.instance
+          .collection('doctor/$druid/patient log')
+          .snapshots()
+          .map(_scheduleListFromSnapshot);
+    }
+    return null;
+  }
+
   // UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
   //   return UserData(uid: uid, name: snapshot.data['name'], usertype: snapshot.data['user type']);
   // }
@@ -84,6 +111,7 @@ class DatabaseService {
   // }
   List<MyAppointment> _myappointmentListFromSnapshot(QuerySnapshot snapshot) {
     //print(ud);
+    getUid();
     return snapshot.documents.map((doc) {
       return MyAppointment(
         name: doc.data['name'] ?? '',
@@ -207,6 +235,29 @@ Future updatePatData(String name, String phoneno) async {
       .setData({'name': name, 'contact no': phoneno}, merge: true);
 }
 
+String xuid = randomAlphaNumeric(20);
+Future updateAppointmentData(
+    String name, String time, String date, String drname) async {
+  getUid();
+  String druid;
+
+  var result = await Firestore.instance
+      .collection("users")
+      .where("name", isEqualTo: "$drname")
+      .where("user type", isEqualTo: "doctor")
+      .getDocuments();
+
+  result.documents.forEach((res) {
+    druid = res.data["uid"];
+  });
+  if (druid != null) {
+    return await Firestore.instance
+        .collection('doctor/$druid/patient log')
+        .document(xuid)
+        .setData({'name': name, 'time': time, 'date': date}, merge: true);
+  }
+}
+
 // Future getClinicInfo(String uid) async {
 //   await Firestore.instance
 //       .collection('users')
@@ -239,3 +290,27 @@ Future updatePatData(String name, String phoneno) async {
 //     return 'false';
 //   }
 // }
+
+Future updateMyAppointment(
+    String name, String time, String date, String drname) async {
+  getUid();
+  String druid;
+
+  var result = await Firestore.instance
+      .collection("users")
+      .where("name", isEqualTo: "$drname")
+      .where("user type", isEqualTo: "doctor")
+      .getDocuments();
+
+  result.documents.forEach((res) {
+    druid = res.data["uid"];
+  });
+
+  if (druid != null) {
+    return await Firestore.instance
+        .collection('patient/$ud/my appointment')
+        .document(xuid)
+        .setData({'name': name, 'time': time, 'date': date, 'drname': drname},
+            merge: true);
+  }
+}

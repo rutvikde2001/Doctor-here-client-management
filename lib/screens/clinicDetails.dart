@@ -1,3 +1,4 @@
+import 'package:doctor_here/screens/CreateAppointment.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
@@ -164,7 +165,13 @@ class ClinicDetails extends StatelessWidget {
                             ),
                           ],
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          CreateAppointment.drname = drname;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CreateAppointment()));
+                        },
                       ),
                     ),
                   ),

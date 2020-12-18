@@ -7,14 +7,10 @@ import 'package:doctor_here/model/ambulance.dart';
 import 'package:doctor_here/model/clinic.dart';
 import 'package:doctor_here/model/myappointment.dart';
 import 'package:doctor_here/model/pharmacies.dart';
-//import 'package:doctor_here/screens/CreateAppointment.dart';
 import 'package:doctor_here/screens/patientSettings.dart';
-
-import 'package:doctor_here/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:provider/provider.dart';
-//import 'package:doctor_here/assests/alert.png';
 import 'package:doctor_here/services/database.dart';
 
 class PtHome extends StatefulWidget {

@@ -266,6 +266,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "random_string",
+      "rootUri": "file:///C:/Users/Rutvik/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/random_string-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/Users/Rutvik/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -368,7 +374,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-10-30T10:09:33.934886Z",
+  "generated": "2020-12-18T15:29:57.602739Z",
   "generator": "pub",
   "generatorVersion": "2.10.1"
 }

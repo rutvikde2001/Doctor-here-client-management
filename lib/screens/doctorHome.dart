@@ -45,10 +45,10 @@ class _MyDrHomePage extends State<DrHome> {
                   label: Text(''),
                   onPressed: () {
                     print("search");
-                  //   signOutGoogle();
-                  //   Navigator.pushReplacement(context,
-                  //       MaterialPageRoute(builder: (context) => SignIn()));
-                   },
+                    //   signOutGoogle();
+                    //   Navigator.pushReplacement(context,
+                    //       MaterialPageRoute(builder: (context) => SignIn()));
+                  },
                 )
               ],
               bottom: TabBar(
@@ -77,10 +77,10 @@ class _MyDrHomePage extends State<DrHome> {
               onPressed: () {
                 // Add your onPressed code here!
                 print("new appointment ");
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CreateAppointment()));
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => CreateAppointment()));
               },
               child: Container(
                 width: 60,
