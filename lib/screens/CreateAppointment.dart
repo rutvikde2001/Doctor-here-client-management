@@ -198,27 +198,29 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () {
-                            updateAppointmentData(
-                                _nameController.text,
-                                "$hr:$min $mod",
-                                "$day/$month/${pickedDate.year}",
-                                CreateAppointment.drname);
+                            if (_nameController.text != null) {
+                              updateAppointmentData(
+                                  _nameController.text,
+                                  "$hr:$min $mod",
+                                  "$day/$month/${pickedDate.year}",
+                                  CreateAppointment.drname);
 
-                            updateMyAppointment(
-                                _nameController.text,
-                                "$hr:$min $mod",
-                                "$day/$month/${pickedDate.year}",
-                                CreateAppointment.drname);
+                              updateMyAppointment(
+                                  _nameController.text,
+                                  "$hr:$min $mod",
+                                  "$day/$month/${pickedDate.year}",
+                                  CreateAppointment.drname);
 
-                            Scaffold.of(contxt).showSnackBar(SnackBar(
-                              content: Text('Appointment Booked!'),
-                              duration: Duration(seconds: 3),
-                            ));
+                              Scaffold.of(contxt).showSnackBar(SnackBar(
+                                content: Text('Appointment Booked!'),
+                                duration: Duration(seconds: 3),
+                              ));
 
-                            Timer(Duration(seconds: 3), () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            });
+                              Timer(Duration(seconds: 3), () {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                              });
+                            }
                           },
                         ),
                       ),
