@@ -127,6 +127,7 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                     SizedBox(height: 20.0),
                     TextFormField(
                       controller: _nameController,
+                      keyboardType: TextInputType.name,
                       decoration:
                           InputDecoration(labelText: 'Enter Patient Name'),
                     ),
@@ -173,6 +174,7 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                     SizedBox(height: 20.0),
                     TextFormField(
                       controller: _remarkController,
+                      keyboardType: TextInputType.multiline,
                       decoration: InputDecoration(labelText: 'Remarks'),
                     ),
                     SizedBox(height: 20.0),

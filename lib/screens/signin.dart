@@ -159,6 +159,7 @@ class SignIn extends StatelessWidget {
               Container(
                   width: 300,
                   child: TextFormField(
+                    keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'Phone Number',
@@ -188,7 +189,7 @@ class SignIn extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    final phone = _phoneController.text.trim();
+                    final phone = "+91" + _phoneController.text.trim();
 
                     loginUser(phone, context);
                   },

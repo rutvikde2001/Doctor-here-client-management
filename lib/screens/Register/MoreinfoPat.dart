@@ -41,11 +41,13 @@ class _MoreInfoUserState extends State<MoreInfoUser> {
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _nameController,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(labelText: 'Enter Full Name'),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _phoneController,
+                  keyboardType: TextInputType.phone,
                   decoration: InputDecoration(labelText: 'Enter Phone number'),
                 ),
                 SizedBox(

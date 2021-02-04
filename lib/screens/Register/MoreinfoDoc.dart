@@ -15,7 +15,64 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
   final _clinicName = TextEditingController();
   final _specialty = TextEditingController();
   final _clinicAddress = TextEditingController();
-  final _clinicTimings = TextEditingController();
+  //final _clinicTimings = TextEditingController();
+
+  TimeOfDay time;
+  var hr, min, mod;
+  String t1 = "Select time", t2 = "Select time";
+  @override
+  void initState() {
+    super.initState();
+    time = TimeOfDay.now();
+
+    if (time.hour >= 12) {
+      hr = time.hour - 11;
+      mod = "PM";
+    } else if (time.hour == 0) {
+      hr = 12;
+      mod = "AM";
+    } else {
+      hr = time.hour;
+      mod = "AM";
+    }
+
+    if (time.minute < 10) {
+      min = "0${time.minute}";
+    } else {
+      min = "${time.minute}";
+    }
+  }
+
+  _pickTime() async {
+    String a;
+    TimeOfDay t = await showTimePicker(context: context, initialTime: time);
+    if (t != null)
+      setState(() {
+        time = t;
+      });
+    if (time.hour >= 12) {
+      hr = time.hour - 12;
+      mod = "PM";
+    } else if (time.hour == 0) {
+      hr = 12;
+      mod = "AM";
+    } else {
+      hr = time.hour;
+      mod = "AM";
+    }
+
+    if (hr == 0) {
+      hr = 12;
+    }
+
+    if (time.minute < 10) {
+      min = "0${time.minute}";
+    } else {
+      min = "${time.minute}";
+    }
+    a = "$hr:$min $mod";
+    return a;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,34 +100,55 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _nameController,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(labelText: 'Enter Full Name'),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _phoneController,
+                  keyboardType: TextInputType.phone,
                   decoration: InputDecoration(labelText: 'Enter Contact No.'),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _specialty,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(labelText: 'Enter Specialty'),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _clinicName,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(labelText: 'Enter Clinic Name'),
                 ),
                 SizedBox(height: 20.0),
                 TextFormField(
                   controller: _clinicAddress,
+                  keyboardType: TextInputType.multiline,
                   decoration:
                       InputDecoration(labelText: 'Enter Clinic Address'),
                 ),
                 SizedBox(height: 20.0),
-                TextFormField(
-                  controller: _clinicTimings,
-                  decoration:
-                      InputDecoration(labelText: 'Enter Clinic Timings'),
+                Text("Enter Clinic Timing:"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    FlatButton(
+                      child: Text(t1),
+                      color: Colors.grey,
+                      onPressed: () async {
+                        t1 = await _pickTime();
+                      },
+                    ),
+                    Text(" - "),
+                    FlatButton(
+                      child: Text(t2),
+                      color: Colors.grey,
+                      onPressed: () async {
+                       t2 = await _pickTime();
+                      },
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 40,
@@ -104,11 +182,13 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
                                 _specialty.text,
                                 _clinicName.text,
                                 _clinicAddress.text,
-                                _clinicTimings.text)
+                                t1 + " - " + t2)
                             .then((value) {
-                              Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => DrHome()));
-                            });
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => DrHome()));
+                        });
                       });
                     },
                   ),

@@ -1,10 +1,10 @@
 //import 'package:doctor_here/login.dart';
-import 'package:doctor_here/screens/Register/MoreinfoPat.dart';
-import 'package:doctor_here/screens/Register/ask.dart';
+//import 'package:doctor_here/screens/Register/MoreinfoDoc.dart';
+//import 'package:doctor_here/screens/Register/ask.dart';
 import 'package:doctor_here/screens/signin.dart';
-import 'package:doctor_here/screens/patientHome.dart';
+//import 'package:doctor_here/screens/patientHome.dart';
 import 'package:flutter/material.dart';
-import 'package:doctor_here/screens/doctorHome.dart';
+//import 'package:doctor_here/screens/doctorHome.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: SignIn(),//DrHome(), //MoreInfoUser(),
+      home: SignIn(), //DrHome(), //MoreInfoUser(),
     );
   }
 }
