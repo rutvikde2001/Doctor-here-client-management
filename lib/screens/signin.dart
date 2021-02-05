@@ -10,6 +10,15 @@ import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:doctor_here/services/auth.dart';
 import 'dart:async';
 import 'package:doctor_here/services/database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+Future<Null> logininfo(String uid, String type) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  prefs.setString('uid', uid);
+  prefs.setBool('isloggedin', true);
+  prefs.setString('type', type);
+}
 
 /// This Widget is the main application widget.
 class SignIn extends StatelessWidget {
@@ -30,16 +39,19 @@ class SignIn extends StatelessWidget {
           AuthResult result = await _auth.signInWithCredential(credential);
 
           FirebaseUser user = result.user;
+          FirebaseUser us = await _auth.currentUser();
           var check = await userTypeCheck();
           if (user != null) {
             // ignore: unrelated_type_equality_checks
             if (check == 'doctor') {
               getUid();
+              logininfo(us.uid, "doctor");
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => DrHome()));
               // ignore: unrelated_type_equality_checks
             } else if (check == "patient") {
               getUid();
+              logininfo(us.uid, "patient");
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => PtHome()));
               // ignore: unrelated_type_equality_checks
@@ -83,7 +95,7 @@ class SignIn extends StatelessWidget {
                         AuthCredential credential =
                             PhoneAuthProvider.getCredential(
                                 verificationId: verificationId, smsCode: code);
-
+                        FirebaseUser us = await _auth.currentUser();
                         AuthResult result =
                             await _auth.signInWithCredential(credential);
 
@@ -96,12 +108,14 @@ class SignIn extends StatelessWidget {
                                 MaterialPageRoute(builder: (context) => Ask()));
                             // ignore: unrelated_type_equality_checks
                           } else if (check == "patient") {
+                            logininfo(us.uid, "patient");
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => PtHome()));
                             // ignore: unrelated_type_equality_checks
                           } else if (check == "doctor") {
+                            logininfo(us.uid, "doctor");
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -205,6 +219,8 @@ class SignIn extends StatelessWidget {
                   signInWithGoogle().whenComplete(() async {
                     bool signin = await signInWithGoogle();
                     //print(signin);
+                    FirebaseAuth _auth = FirebaseAuth.instance;
+                    FirebaseUser us = await _auth.currentUser();
                     var check = await userTypeCheck();
                     if (signin) {
                       //print(check);
@@ -216,11 +232,13 @@ class SignIn extends StatelessWidget {
                         // ignore: unrelated_type_equality_checks
                       } else if (check == "patient") {
                         getUid();
+                        logininfo(us.uid, 'patient');
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => PtHome()));
                         //print("2");
                       } else if (check == "doctor") {
                         getUid();
+                        logininfo(us.uid, 'doctor');
                         Navigator.pushReplacement(context,
                             MaterialPageRoute(builder: (context) => DrHome()));
                         //print("1");

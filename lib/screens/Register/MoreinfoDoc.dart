@@ -1,5 +1,7 @@
 import 'package:doctor_here/model/user.dart';
 import 'package:doctor_here/screens/doctorHome.dart';
+import 'package:doctor_here/screens/signin.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/services/database.dart';
@@ -174,6 +176,8 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
                     ),
                     onPressed: () async {
                       UserData(name: _nameController.text);
+                      FirebaseAuth _auth = FirebaseAuth.instance;
+                      FirebaseUser us = await _auth.currentUser();
                       await updateUserData(_nameController.text, "doctor")
                           .then((value) async {
                         await updateDocData(
@@ -184,6 +188,7 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
                                 _clinicAddress.text,
                                 t1 + " - " + t2)
                             .then((value) {
+                              logininfo(us.uid, "doctor");
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

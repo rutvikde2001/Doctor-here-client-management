@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:flutter/material.dart';
 //import 'package:doctor_here/model/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'database.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -41,13 +42,19 @@ Future<bool> signInWithGoogle() async {
 
 void signOutGoogle() async {
   await googleSignIn.signOut();
-
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.remove('uid');
+  prefs.remove('isloggedin');
+  prefs.remove('type');
   print("User Sign Out");
 }
 
 void signOut() async {
   await _auth.signOut();
-  
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.remove('uid');
+  prefs.remove('isloggedin');
+  prefs.remove('type');
 }
 
 // class AuthService {
