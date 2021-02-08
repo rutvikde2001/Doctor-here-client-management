@@ -5,12 +5,12 @@ import 'package:doctor_here/screens/patientHome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:doctor_here/services/auth.dart';
 import 'dart:async';
 import 'package:doctor_here/services/database.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sign_button/sign_button.dart';
 
 Future<Null> logininfo(String uid, String type) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -157,6 +157,9 @@ class SignIn extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       'Register',
                       style: TextStyle(
@@ -213,8 +216,10 @@ class SignIn extends StatelessWidget {
                 height: 60,
               ),
               SignInButton(
-                Buttons.GoogleDark,
-                text: "Sign up with Google",
+                buttonType: ButtonType.google,
+                btnColor: Colors.white,
+                btnTextColor: Colors.black,
+                buttonSize: ButtonSize.large,
                 onPressed: () {
                   signInWithGoogle().whenComplete(() async {
                     bool signin = await signInWithGoogle();

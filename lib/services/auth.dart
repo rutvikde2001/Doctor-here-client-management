@@ -43,18 +43,14 @@ Future<bool> signInWithGoogle() async {
 void signOutGoogle() async {
   await googleSignIn.signOut();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.remove('uid');
-  prefs.remove('isloggedin');
-  prefs.remove('type');
+  prefs.clear();
   print("User Sign Out");
 }
 
 void signOut() async {
   await _auth.signOut();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.remove('uid');
-  prefs.remove('isloggedin');
-  prefs.remove('type');
+  prefs.clear();
 }
 
 // class AuthService {
