@@ -31,8 +31,7 @@ class ClinicDetails extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: GradientAppBar(
-          backgroundColorStart: Colors.blue[900],
-          backgroundColorEnd: Colors.blue[500],
+          gradient: LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
           title: Text('Clinic Details'),
           centerTitle: true,
         ),

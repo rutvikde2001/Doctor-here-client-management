@@ -12,21 +12,21 @@ import 'package:random_string/random_string.dart';
 String ud, druid;
 getUid() async {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final FirebaseUser user = await auth.currentUser();
+  final User user =  auth.currentUser;
   //print(user.uid.toString());
   ud = user.uid.toString();
   print(ud);
 }
 
 getDocUid(String drname) async {
-  var result = await Firestore.instance
+  var result = await FirebaseFirestore.instance
       .collection("users")
       .where("name", isEqualTo: "$drname")
       .where("user type", isEqualTo: "doctor")
-      .getDocuments();
+      .get();
 
-  result.documents.forEach((res) {
-    if (res.data["uid"] != null) druid = res.data["uid"];
+  result.docs.forEach((res) {
+    if (res.data()["uid"] != null) druid = res.data()["uid"];
   });
 }
 
@@ -39,38 +39,38 @@ class DatabaseService {
   //     Firestore.instance.collection('doctor/ebyD7i0Xqk7joFlqAh0x/patient log');
 
   final CollectionReference userCollection =
-      Firestore.instance.collection('users');
+      FirebaseFirestore.instance.collection('users');
 
   // .then((value) => y = value);
   // final CollectionReference myappointmentCollection = Firestore.instance
   //     .collection('patient')
-  //     .document(ud)
+  //     .doc(ud)
   //     .collection('my appointment');
 
   final CollectionReference ambulanceCollection =
-      Firestore.instance.collection('ambulance');
+      FirebaseFirestore.instance.collection('ambulance');
 
   final CollectionReference clinicCollection =
-      Firestore.instance.collection('doctor');
+      FirebaseFirestore.instance.collection('doctor');
 
   final CollectionReference pharmaciesCollection =
-      Firestore.instance.collection('pharmacies');
+      FirebaseFirestore.instance.collection('pharmacies');
 
   //  list from snapshot
   List<Appointment> _appointmentListFromSnapshot(QuerySnapshot snapshot) {
     getUid();
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return Appointment(
-          name: doc.data['name'] ?? '',
-          time: doc.data['time'] ?? '0:00AM',
-          date: doc.data['date'] ?? '01/01/2020');
+          name: doc.data()['name'] ?? '',
+          time: doc.data()['time'] ?? '0:00AM',
+          date: doc.data()['date'] ?? '01/01/2020');
     }).toList();
   }
 
   // Get brews stream
   Stream<List<Appointment>> get appointment {
     getUid();
-    return Firestore.instance
+    return FirebaseFirestore.instance
         .collection('doctor/$ud/patient log')
         .snapshots()
         .map(_appointmentListFromSnapshot);
@@ -78,11 +78,11 @@ class DatabaseService {
 
   List<Schedule> _scheduleListFromSnapshot(QuerySnapshot snapshot) {
     getUid();
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return Schedule(
-          name: doc.data['name'] ?? '',
-          time: doc.data['time'] ?? '0:00AM',
-          date: doc.data['date'] ?? '01/01/2020');
+          name: doc.data()['name'] ?? '',
+          time: doc.data()['time'] ?? '0:00AM',
+          date: doc.data()['date'] ?? '01/01/2020');
     }).toList();
   }
 
@@ -90,7 +90,7 @@ class DatabaseService {
   Stream<List<Schedule>> get schedule {
     getUid();
     if (druid != null) {
-      return Firestore.instance
+      return FirebaseFirestore.instance
           .collection('doctor/$druid/patient log')
           .snapshots()
           .map(_scheduleListFromSnapshot);
@@ -102,22 +102,22 @@ class DatabaseService {
   //   return UserData(uid: uid, name: snapshot.data['name'], usertype: snapshot.data['user type']);
   // }
 
-  // // Get user document
+  // // Get user doc
   // Stream<UserData> get userData {
   //   return userCollection
-  //       .document(uid)
+  //       .doc(uid)
   //       .snapshots()
   //       .map(_userDataFromSnapshot);
   // }
   List<MyAppointment> _myappointmentListFromSnapshot(QuerySnapshot snapshot) {
     //print(ud);
     getUid();
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return MyAppointment(
-        name: doc.data['name'] ?? '',
-        time: doc.data['time'] ?? '0:00AM',
-        date: doc.data['date'] ?? '1/1/2020',
-        drname: doc.data['drname'] ?? 'abc',
+        name: doc.data()['name'] ?? '',
+        time: doc.data()['time'] ?? '0:00AM',
+        date: doc.data()['date'] ?? '1/1/2020',
+        drname: doc.data()['drname'] ?? 'abc',
       );
     }).toList();
   }
@@ -125,20 +125,20 @@ class DatabaseService {
   // Get brews stream
   Stream<List<MyAppointment>> get myappointment {
     getUid();
-    return Firestore.instance
+    return FirebaseFirestore.instance
         .collection('patient')
-        .document(ud)
+        .doc(ud)
         .collection('my appointment')
         .snapshots()
         .map(_myappointmentListFromSnapshot);
   }
 
   List<Ambulance> _ambulanceListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return Ambulance(
-          name: doc.data['name'] ?? 'XYZ',
-          phone: doc.data['phone'] ?? '0000000000',
-          pincode: doc.data['pincode'] ?? '400000');
+          name: doc.data()['name'] ?? 'XYZ',
+          phone: doc.data()['phone'] ?? '0000000000',
+          pincode: doc.data()['pincode'] ?? '400000');
     }).toList();
   }
 
@@ -147,15 +147,15 @@ class DatabaseService {
   }
 
   List<Clinic> _clinicListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return Clinic(
-          drname: doc.data['name'] ?? 'XYZ',
-          phone: doc.data['contact no'] ?? '0000000000',
-          pincode: doc.data['pincode'] ?? '400000',
-          clinicname: doc.data['clinic name'] ?? 'ABC',
-          address: doc.data['clinic address'] ?? 'x,y,z',
-          speciality: doc.data['speciality'] ?? 'doctor',
-          timing: doc.data['clinic timing'] ?? '0:00AM');
+          drname: doc.data()['name'] ?? 'XYZ',
+          phone: doc.data()['contact no'] ?? '0000000000',
+          pincode: doc.data()['pincode'] ?? '400000',
+          clinicname: doc.data()['clinic name'] ?? 'ABC',
+          address: doc.data()['clinic address'] ?? 'x,y,z',
+          speciality: doc.data()['speciality'] ?? 'doctor',
+          timing: doc.data()['clinic timing'] ?? '0:00AM');
     }).toList();
   }
 
@@ -164,13 +164,13 @@ class DatabaseService {
   }
 
   List<Pharmacies> _pharmaciesListFromSnapshot(QuerySnapshot snapshot) {
-    return snapshot.documents.map((doc) {
+    return snapshot.docs.map((doc) {
       return Pharmacies(
-          name: doc.data['name'] ?? 'XYZ',
-          phone: doc.data['phone no.'] ?? '0000000000',
-          pincode: doc.data['pincode'] ?? '400000',
-          address: doc.data['address'] ?? '',
-          timing: doc.data['timing'] ?? '0:00AM-0:00AM');
+          name: doc.data()['name'] ?? 'XYZ',
+          phone: doc.data()['phone no.'] ?? '0000000000',
+          pincode: doc.data()['pincode'] ?? '400000',
+          address: doc.data()['address'] ?? '',
+          timing: doc.data()['timing'] ?? '0:00AM-0:00AM');
     }).toList();
   }
 
@@ -182,27 +182,27 @@ class DatabaseService {
 final FirebaseAuth auth = FirebaseAuth.instance;
 
 Future updateUserData(String name, String usertype) async {
-  final FirebaseUser user = await auth.currentUser();
+  final User user =  auth.currentUser;
   UserData(name: name, uid: user.uid, usertype: usertype);
-  return await Firestore.instance
+  return await FirebaseFirestore.instance
       .collection('users')
-      .document(user.uid)
-      .setData({'name': name, 'uid': user.uid, 'user type': usertype},
-          merge: true);
+      .doc(user.uid)
+      .set({'name': name, 'uid': user.uid, 'user type': usertype},
+          SetOptions(merge: true));
 }
 
 Future<String> userTypeCheck() async {
-  final FirebaseUser user = await auth.currentUser();
+  final User user =  auth.currentUser;
   var uid = user.uid;
   var x;
-  await Firestore.instance
+  await FirebaseFirestore.instance
       .collection("users")
-      .document("$uid")
+      .doc("$uid")
       .get()
       .then((value) {
     //print("Hello::" + value.data["user type"]);
     if (value.exists) {
-      x = value.data["user type"];
+      x = value.data()["user type"];
     } else {
       print("No document");
       x = "no";
@@ -213,26 +213,26 @@ Future<String> userTypeCheck() async {
 
 Future updateDocData(String name, String phoneno, String speciality,
     String clinicName, String clinicAdd, String clinicTime) async {
-  final FirebaseUser user = await auth.currentUser();
-  return await Firestore.instance
+  final User user =  auth.currentUser;
+  return await FirebaseFirestore.instance
       .collection('doctor')
-      .document(user.uid)
-      .setData({
+      .doc(user.uid)
+      .set({
     'name': name,
     'contact no': phoneno,
     'speciality': speciality,
     'clinic name': clinicName,
     'clinic address': clinicAdd,
     'clinic timing': clinicTime
-  }, merge: true);
+  }, SetOptions(merge: true));
 }
 
 Future updatePatData(String name, String phoneno) async {
-  final FirebaseUser user = await auth.currentUser();
-  return await Firestore.instance
+  final User user =  auth.currentUser;
+  return await FirebaseFirestore.instance
       .collection('patient')
-      .document(user.uid)
-      .setData({'name': name, 'contact no': phoneno}, merge: true);
+      .doc(user.uid)
+      .set({'name': name, 'contact no': phoneno}, SetOptions(merge: true));
 }
 
 String xuid = randomAlphaNumeric(20);
@@ -241,27 +241,27 @@ Future updateAppointmentData(
   getUid();
   String druid;
 
-  var result = await Firestore.instance
+  var result = await FirebaseFirestore.instance
       .collection("users")
       .where("name", isEqualTo: "$drname")
       .where("user type", isEqualTo: "doctor")
-      .getDocuments();
+      .get();
 
-  result.documents.forEach((res) {
-    druid = res.data["uid"];
+  result.docs.forEach((res) {
+    druid = res.data()["uid"];
   });
   if (druid != null) {
-    return await Firestore.instance
+    return await FirebaseFirestore.instance
         .collection('doctor/$druid/patient log')
-        .document(xuid)
-        .setData({'name': name, 'time': time, 'date': date}, merge: true);
+        .doc(xuid)
+        .set({'name': name, 'time': time, 'date': date}, SetOptions(merge: true));
   }
 }
 
 // Future getClinicInfo(String uid) async {
-//   await Firestore.instance
+//   await FirebaseFirestore.instance
 //       .collection('users')
-//       .document(uid)
+//       .doc(uid)
 //       .get()
 //       .then((value) {
 //     return value;
@@ -271,15 +271,15 @@ Future updateAppointmentData(
 // Future<String> userCheck(String uid) async {
 //   var exists = 'false';
 //   try {
-//     await Firestore.instance
+//     await FirebaseFirestore.instance
 //         .collection("users")
 //         .where("uid", isEqualTo: "$uid")
-//         .getDocuments()
+//         .getdocs()
 //         .then((doc) {
-//       doc.documents.forEach((element) {
+//       doc.docs.forEach((element) {
 //         print(element.data);
 //       });
-//       if (doc.documents != null) {
+//       if (doc.docs != null) {
 //         exists = 'true';
 //       } else {
 //         exists = 'false';
@@ -296,21 +296,21 @@ Future updateMyAppointment(
   getUid();
   String druid;
 
-  var result = await Firestore.instance
+  var result = await FirebaseFirestore.instance
       .collection("users")
       .where("name", isEqualTo: "$drname")
       .where("user type", isEqualTo: "doctor")
-      .getDocuments();
+      .get();
 
-  result.documents.forEach((res) {
-    druid = res.data["uid"];
+  result.docs.forEach((res) {
+    druid = res.data()["uid"];
   });
 
   if (druid != null) {
-    return await Firestore.instance
+    return await FirebaseFirestore.instance
         .collection('patient/$ud/my appointment')
-        .document(xuid)
-        .setData({'name': name, 'time': time, 'date': date, 'drname': drname},
-            merge: true);
+        .doc(xuid)
+        .set({'name': name, 'time': time, 'date': date, 'drname': drname},
+            SetOptions(merge: true));
   }
 }

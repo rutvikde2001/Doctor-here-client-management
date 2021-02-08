@@ -11,8 +11,8 @@ class Ask extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: GradientAppBar(
-          backgroundColorStart: Colors.blue[900],
-          backgroundColorEnd: Colors.blue[500],
+          gradient:
+              LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
           title: Text('Doctor Here'),
           centerTitle: true,
         ),
@@ -67,10 +67,8 @@ class MyStatelessWidget extends StatelessWidget {
                   )),
               onPressed: () {
                 UserData(usertype: "doctor");
-                Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MoreInfoDoc()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => MoreInfoDoc()));
               },
             ),
           ),
@@ -97,11 +95,9 @@ class MyStatelessWidget extends StatelessWidget {
                     color: Colors.white,
                   )),
               onPressed: () {
-                 UserData(usertype: "patient");
-                 Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MoreInfoUser()));
+                UserData(usertype: "patient");
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => MoreInfoUser()));
               },
             ),
           ),

@@ -19,22 +19,22 @@ Future<bool> signInWithGoogle() async {
   final GoogleSignInAuthentication googleSignInAuthentication =
       await googleSignInAccount.authentication;
 
-  final AuthCredential credential = GoogleAuthProvider.getCredential(
+  final AuthCredential credential = GoogleAuthProvider.credential(
     accessToken: googleSignInAuthentication.accessToken,
     idToken: googleSignInAuthentication.idToken,
   );
 
-  final AuthResult authResult = await _auth.signInWithCredential(credential);
-  final FirebaseUser user = authResult.user;
+  final UserCredential authResult = await _auth.signInWithCredential(credential);
+  final User user = authResult.user;
 
   //print("uid ::::" + user.uid);
   DatabaseService(uid: user.uid);
-  User(uid: user.uid);
+  Users(uid: user.uid);
 
   assert(!user.isAnonymous);
   assert(await user.getIdToken() != null);
 
-  final FirebaseUser currentUser = await _auth.currentUser();
+  final User currentUser =  _auth.currentUser;
   assert(user.uid == currentUser.uid);
 
   return userSignedIn;
@@ -54,15 +54,15 @@ void signOut() async {
 }
 
 // class AuthService {
-//create user obj based on FirebaseUser
-// User _userFromFilebaseUser(FirebaseUser user) {
+//create user obj based on User
+// User _userFromFilebaseUser(User user) {
 //   return user != null ? User(uid: user.uid) : null;
 // }
 
 // //auth change user stream
 // Stream<User> get user {
 //   return _auth.onAuthStateChanged
-//       //.map((FirebaseUser user) => _userFromFilebaseUser(user));
+//       //.map((User user) => _userFromFilebaseUser(user));
 //       .map(_userFromFilebaseUser);
 // }
 
@@ -71,7 +71,7 @@ void signOut() async {
 //     try {
 //       AuthResult result = await _auth.signInWithEmailAndPassword(
 //           email: email, password: password);
-//       FirebaseUser user = result.user;
+//       User user = result.user;
 //       return _userFromFilebaseUser(user);
 //     } catch (e) {
 //       print(e.toString());
@@ -83,7 +83,7 @@ void signOut() async {
 //   /* Future registerWithEmailAndPassword(String email, String password) async {
 //     try {
 //       AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-//       FirebaseUser user = result.user;
+//       User user = result.user;
 
 //       await DatabaseService(uid: user.uid).updateUserData('0', 'new crew member', 100);
 //       return _userFromFilebaseUser(user);

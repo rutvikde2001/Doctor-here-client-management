@@ -36,10 +36,10 @@ class SignIn extends StatelessWidget {
         verificationCompleted: (AuthCredential credential) async {
           //Navigator.of(context).pop();
 
-          AuthResult result = await _auth.signInWithCredential(credential);
+          UserCredential result = await _auth.signInWithCredential(credential);
 
-          FirebaseUser user = result.user;
-          FirebaseUser us = await _auth.currentUser();
+          User user = result.user;
+          User us =  _auth.currentUser;
           var check = await userTypeCheck();
           if (user != null) {
             // ignore: unrelated_type_equality_checks
@@ -65,7 +65,7 @@ class SignIn extends StatelessWidget {
 
           //This callback would gets called when verification is done auto maticlly
         },
-        verificationFailed: (AuthException exception) {
+        verificationFailed: (FirebaseAuthException exception) {
           print(
               "$exception verification failed ${exception.code}. Message: ${exception.message}");
           AlertDialog(title: Text("Invalide verification code"));
@@ -93,13 +93,13 @@ class SignIn extends StatelessWidget {
                       onPressed: () async {
                         final code = _codeController.text.trim();
                         AuthCredential credential =
-                            PhoneAuthProvider.getCredential(
+                            PhoneAuthProvider.credential(
                                 verificationId: verificationId, smsCode: code);
-                        FirebaseUser us = await _auth.currentUser();
-                        AuthResult result =
+                        User us =  _auth.currentUser;
+                        UserCredential result =
                             await _auth.signInWithCredential(credential);
 
-                        FirebaseUser user = result.user;
+                        User user = result.user;
                         var check = userTypeCheck();
                         if (user != null) {
                           // ignore: unrelated_type_equality_checks
@@ -142,8 +142,8 @@ class SignIn extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: GradientAppBar(
-          backgroundColorStart: Colors.blue[900],
-          backgroundColorEnd: Colors.blue[500],
+          gradient:
+              LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
           title: Text('Doctor Here'),
           centerTitle: true,
         ),
@@ -225,7 +225,7 @@ class SignIn extends StatelessWidget {
                     bool signin = await signInWithGoogle();
                     //print(signin);
                     FirebaseAuth _auth = FirebaseAuth.instance;
-                    FirebaseUser us = await _auth.currentUser();
+                    User us = _auth.currentUser;
                     var check = await userTypeCheck();
                     if (signin) {
                       //print(check);

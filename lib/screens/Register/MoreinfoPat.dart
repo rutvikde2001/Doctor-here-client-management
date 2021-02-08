@@ -22,8 +22,7 @@ class _MoreInfoUserState extends State<MoreInfoUser> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: GradientAppBar(
-        backgroundColorStart: Colors.blue[900],
-        backgroundColorEnd: Colors.blue[500],
+        gradient: LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
         title: Text('More Info'),
         centerTitle: true,
       ),
@@ -77,7 +76,7 @@ class _MoreInfoUserState extends State<MoreInfoUser> {
                     onPressed: () async {
                       UserData(name: _nameController.text);
                       FirebaseAuth _auth = FirebaseAuth.instance;
-                      FirebaseUser us = await _auth.currentUser();
+                      User us =  _auth.currentUser;
                       await updateUserData(_nameController.text, "patient")
                           .then((value) async {
                         await updatePatData(
