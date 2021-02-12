@@ -3,12 +3,14 @@
 //import 'package:doctor_here/screens/Register/ask.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/screens/patientHome.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:doctor_here/screens/doctorHome.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   var type,
       isLoggedIn = (prefs.getBool('isloggedin') == null)
@@ -21,7 +23,7 @@ Future<void> main() async {
         ? (type == 'doctor')
             ? DrHome()
             : PtHome()
-        : SignIn(),
+        :  SignIn(),
   ));
 }
 

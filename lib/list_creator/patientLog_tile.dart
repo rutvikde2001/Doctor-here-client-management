@@ -1,3 +1,5 @@
+import 'package:doctor_here/screens/chat.dart';
+//import 'package:doctor_here/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/model/appointment.dart';
 //import 'package:intl/intl.dart';
@@ -5,10 +7,13 @@ import 'package:doctor_here/model/appointment.dart';
 class PatientLogTile extends StatelessWidget {
   final Appointment patientlog;
   PatientLogTile({this.patientlog});
+
+
   @override
   Widget build(BuildContext context) {
     var date = patientlog.date;
     var name = patientlog.name.split(" ");
+    //var ptuid =  getPatUid(patientlog.name).toString();
     var n = name[0];
     var sur;
     n.split('');
@@ -39,6 +44,12 @@ class PatientLogTile extends StatelessWidget {
               style: TextStyle(color: Colors.black)),
           onTap: () {
             print("${patientlog.name}");
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Chat(
+            peerId: patientlog.ptuid,
+            peerName: patientlog.name)));
           },
         ),
       ),

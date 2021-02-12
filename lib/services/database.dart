@@ -7,7 +7,6 @@ import 'package:doctor_here/model/schedule.dart';
 import 'package:doctor_here/model/user.dart';
 import 'package:doctor_here/model/ambulance.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:random_string/random_string.dart';
 
 String ud, druid;
 getUid() async {
@@ -25,10 +24,23 @@ getDocUid(String drname) async {
       .where("user type", isEqualTo: "doctor")
       .get();
 
-  result.docs.forEach((res) {
-    if (res.data()["uid"] != null) druid = res.data()["uid"];
+  result.docs.forEach((res)  {
+    if (res.data()["uid"] != null) return druid = res.data()["uid"];
   });
 }
+
+getPatUid(String ptname) async {
+  var result = await FirebaseFirestore.instance
+      .collection("users")
+      .where("name", isEqualTo: "$ptname")
+      .where("user type", isEqualTo: "patient")
+      .get();
+
+  result.docs.forEach((res) async {
+    if (res.data()["uid"] != null) return druid = await res.data()["uid"];
+  });
+}
+
 
 class DatabaseService {
   final String uid;
@@ -63,7 +75,8 @@ class DatabaseService {
       return Appointment(
           name: doc.data()['name'] ?? '',
           time: doc.data()['time'] ?? '0:00AM',
-          date: doc.data()['date'] ?? '01/01/2020');
+          date: doc.data()['date'] ?? '01/01/2020',
+          ptuid: doc.data()['ptuid']?? '');
     }).toList();
   }
 
@@ -118,6 +131,7 @@ class DatabaseService {
         time: doc.data()['time'] ?? '0:00AM',
         date: doc.data()['date'] ?? '1/1/2020',
         drname: doc.data()['drname'] ?? 'abc',
+        druid: doc.data()['druid']?? ''
       );
     }).toList();
   }
@@ -235,7 +249,7 @@ Future updatePatData(String name, String phoneno) async {
       .set({'name': name, 'contact no': phoneno}, SetOptions(merge: true));
 }
 
-String xuid = randomAlphaNumeric(20);
+String xuid = DateTime.now().millisecondsSinceEpoch.toString();
 Future updateAppointmentData(
     String name, String time, String date, String drname) async {
   getUid();
@@ -254,7 +268,7 @@ Future updateAppointmentData(
     return await FirebaseFirestore.instance
         .collection('doctor/$druid/patient log')
         .doc(xuid)
-        .set({'name': name, 'time': time, 'date': date}, SetOptions(merge: true));
+        .set({'name': name, 'time': time, 'date': date, 'ptuid': auth.currentUser.uid}, SetOptions(merge: true));
   }
 }
 
@@ -310,7 +324,7 @@ Future updateMyAppointment(
     return await FirebaseFirestore.instance
         .collection('patient/$ud/my appointment')
         .doc(xuid)
-        .set({'name': name, 'time': time, 'date': date, 'drname': drname},
+        .set({'name': name, 'time': time, 'date': date, 'drname': drname, druid: druid},
             SetOptions(merge: true));
   }
 }

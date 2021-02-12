@@ -3,5 +3,6 @@ class MyAppointment {
   final String time;
   final String date;
   final String drname;
-  MyAppointment({this.name, this.time, this.date, this.drname});
+  final String druid;
+  MyAppointment({this.name, this.time, this.date, this.drname, this.druid});
 }

@@ -1,7 +1,8 @@
-import 'dart:async';
+//import 'dart:async';
 import 'package:doctor_here/screens/scheduleAppointment.dart';
 import 'package:doctor_here/services/database.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class CreateAppointment extends StatefulWidget {
@@ -112,7 +113,8 @@ class _CreateAppointmentState extends State<CreateAppointment> {
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: GradientAppBar(
-          gradient: LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
+          gradient:
+              LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
           title: Text('Create Appointment'),
           centerTitle: true,
         ),
@@ -212,7 +214,13 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                                   "$day/$month/${pickedDate.year}",
                                   CreateAppointment.drname);
 
-                              Scaffold.of(contxt).showSnackBar(SnackBar(
+                              Fluttertoast.showToast(
+                                  msg: 'Appointment Booked',
+                                  backgroundColor: Colors.white,
+                                  textColor: Colors.black);
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                              /*Scaffold.of(contxt).showSnackBar(SnackBar(
                                 content: Text('Appointment Booked!'),
                                 duration: Duration(seconds: 3),
                               ));
@@ -220,7 +228,7 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                               Timer(Duration(seconds: 3), () {
                                 Navigator.pop(context);
                                 Navigator.pop(context);
-                              });
+                              });*/
                             }
                           },
                         ),
