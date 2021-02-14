@@ -1,3 +1,5 @@
+import 'package:doctor_here/screens/AppoinmentDetails.dart';
+import 'package:doctor_here/screens/doctorSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/model/appointment.dart';
 import 'package:intl/intl.dart';
@@ -34,6 +36,7 @@ class AppointmentTile extends StatelessWidget {
                 style: TextStyle(color: Colors.black)),
             onTap: () {
               print("${appointment.name}");
+              Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentDetails(appointment: appointment)));
             },
           ),
         ),

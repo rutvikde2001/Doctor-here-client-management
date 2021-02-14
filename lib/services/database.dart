@@ -76,7 +76,11 @@ class DatabaseService {
           name: doc.data()['name'] ?? '',
           time: doc.data()['time'] ?? '0:00AM',
           date: doc.data()['date'] ?? '01/01/2020',
-          ptuid: doc.data()['ptuid']?? '');
+          ptuid: doc.data()['ptuid']?? '',
+          diagnosis: doc.data()['diagnosis'] ?? '',
+          patientHistory: doc.data()['patient history']?? '',
+          id: doc.id,
+      );
     }).toList();
   }
 
@@ -327,4 +331,26 @@ Future updateMyAppointment(
         .set({'name': name, 'time': time, 'date': date, 'drname': drname, druid: druid},
             SetOptions(merge: true));
   }
+}
+
+Future updatePatientHistory(String history, String id) async {
+  final User user =  auth.currentUser;
+  return await FirebaseFirestore.instance
+      .collection('doctor')
+      .doc(user.uid)
+      .collection('patient log')
+      .doc(id)
+      .set({'patient history': history},
+      SetOptions(merge: true));
+}
+
+Future updateDiagnosis(String diagnosis, String id) async {
+  final User user =  auth.currentUser;
+  return await FirebaseFirestore.instance
+      .collection('doctor')
+      .doc(user.uid)
+      .collection('patient log')
+      .doc(id)
+      .set({'diagnosis': diagnosis},
+      SetOptions(merge: true));
 }
