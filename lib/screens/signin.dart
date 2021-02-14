@@ -5,6 +5,7 @@ import 'package:doctor_here/screens/patientHome.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:doctor_here/services/auth.dart';
 import 'dart:async';
@@ -39,7 +40,7 @@ class SignIn extends StatelessWidget {
           UserCredential result = await _auth.signInWithCredential(credential);
 
           User user = result.user;
-          User us =  _auth.currentUser;
+          User us = _auth.currentUser;
           var check = await userTypeCheck();
           if (user != null) {
             // ignore: unrelated_type_equality_checks
@@ -66,9 +67,13 @@ class SignIn extends StatelessWidget {
           //This callback would gets called when verification is done auto maticlly
         },
         verificationFailed: (FirebaseAuthException exception) {
+          Fluttertoast.showToast(
+              msg: 'Verification Failed',
+              backgroundColor: Colors.black,
+              textColor: Colors.red);
           print(
               "$exception verification failed ${exception.code}. Message: ${exception.message}");
-          AlertDialog(title: Text("Invalide verification code"));
+          AlertDialog(title: Text("Invalid verification code"));
         },
         codeSent: (String verificationId, [int forceResendingToken]) {
           showDialog(
@@ -95,7 +100,7 @@ class SignIn extends StatelessWidget {
                         AuthCredential credential =
                             PhoneAuthProvider.credential(
                                 verificationId: verificationId, smsCode: code);
-                        User us =  _auth.currentUser;
+                        User us = _auth.currentUser;
                         UserCredential result =
                             await _auth.signInWithCredential(credential);
 
@@ -123,8 +128,7 @@ class SignIn extends StatelessWidget {
                           }
                         } else {
                           print("Error");
-                          AlertDialog(
-                              title: Text("Invalide verification code"));
+                          AlertDialog(title: Text("Invalid verification code"));
                         }
                       },
                     )
@@ -132,7 +136,12 @@ class SignIn extends StatelessWidget {
                 );
               });
         },
-        codeAutoRetrievalTimeout: null);
+        codeAutoRetrievalTimeout: (String verificationId) {
+          Fluttertoast.showToast(
+              msg: 'Auto code retieval failed',
+              backgroundColor: Colors.black,
+              textColor: Colors.red);
+        });
   }
 
   @override
@@ -206,7 +215,8 @@ class SignIn extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    final phone = "+91" + _phoneController.text.trim();
+                    print(_phoneController.text);
+                    final phone =  _phoneController.text.trim();
 
                     loginUser(phone, context);
                   },
