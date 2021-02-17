@@ -11,7 +11,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 String ud, druid;
 getUid() async {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final User user =  auth.currentUser;
+  final User user = auth.currentUser;
   //print(user.uid.toString());
   ud = user.uid.toString();
   print(ud);
@@ -24,7 +24,7 @@ getDocUid(String drname) async {
       .where("user type", isEqualTo: "doctor")
       .get();
 
-  result.docs.forEach((res)  {
+  result.docs.forEach((res) {
     if (res.data()["uid"] != null) return druid = res.data()["uid"];
   });
 }
@@ -40,7 +40,6 @@ getPatUid(String ptname) async {
     if (res.data()["uid"] != null) return druid = await res.data()["uid"];
   });
 }
-
 
 class DatabaseService {
   final String uid;
@@ -76,11 +75,10 @@ class DatabaseService {
           name: doc.data()['name'] ?? '',
           time: doc.data()['time'] ?? '0:00AM',
           date: doc.data()['date'] ?? '01/01/2020',
-          ptuid: doc.data()['ptuid']?? '',
+          ptuid: doc.data()['ptuid'] ?? '',
           diagnosis: doc.data()['diagnosis'] ?? '',
-          patientHistory: doc.data()['patient history']?? '',
-          id: doc.id,
-      );
+          patientHistory: doc.data()['patient history'] ?? '',
+          id: doc.id);
     }).toList();
   }
 
@@ -131,12 +129,14 @@ class DatabaseService {
     getUid();
     return snapshot.docs.map((doc) {
       return MyAppointment(
-        name: doc.data()['name'] ?? '',
-        time: doc.data()['time'] ?? '0:00AM',
-        date: doc.data()['date'] ?? '1/1/2020',
-        drname: doc.data()['drname'] ?? 'abc',
-        druid: doc.data()['druid']?? ''
-      );
+          name: doc.data()['name'] ?? '',
+          time: doc.data()['time'] ?? '0:00AM',
+          date: doc.data()['date'] ?? '1/1/2020',
+          drname: doc.data()['drname'] ?? 'abc',
+          druid: doc.data()['druid'] ?? '',
+          diagnosis: doc.data()['diagnosis'] ?? '',
+          patientHistory: doc.data()['patient history'] ?? '',
+          id: doc.id);
     }).toList();
   }
 
@@ -173,7 +173,8 @@ class DatabaseService {
           clinicname: doc.data()['clinic name'] ?? 'ABC',
           address: doc.data()['clinic address'] ?? 'x,y,z',
           speciality: doc.data()['speciality'] ?? 'doctor',
-          timing: doc.data()['clinic timing'] ?? '0:00AM');
+          timing: doc.data()['clinic timing'] ?? '0:00AM',
+          druid: doc.data()['id'] ?? '');
     }).toList();
   }
 
@@ -200,17 +201,15 @@ class DatabaseService {
 final FirebaseAuth auth = FirebaseAuth.instance;
 
 Future updateUserData(String name, String usertype) async {
-  final User user =  auth.currentUser;
+  final User user = auth.currentUser;
   UserData(name: name, uid: user.uid, usertype: usertype);
-  return await FirebaseFirestore.instance
-      .collection('users')
-      .doc(user.uid)
-      .set({'name': name, 'uid': user.uid, 'user type': usertype},
-          SetOptions(merge: true));
+  return await FirebaseFirestore.instance.collection('users').doc(user.uid).set(
+      {'name': name, 'uid': user.uid, 'user type': usertype},
+      SetOptions(merge: true));
 }
 
 Future<String> userTypeCheck() async {
-  final User user =  auth.currentUser;
+  final User user = auth.currentUser;
   var uid = user.uid;
   var x;
   await FirebaseFirestore.instance
@@ -231,7 +230,7 @@ Future<String> userTypeCheck() async {
 
 Future updateDocData(String name, String phoneno, String speciality,
     String clinicName, String clinicAdd, String clinicTime) async {
-  final User user =  auth.currentUser;
+  final User user = auth.currentUser;
   return await FirebaseFirestore.instance
       .collection('doctor')
       .doc(user.uid)
@@ -241,12 +240,12 @@ Future updateDocData(String name, String phoneno, String speciality,
     'speciality': speciality,
     'clinic name': clinicName,
     'clinic address': clinicAdd,
-    'clinic timing': clinicTime
+    'clinic timing': clinicTime,
   }, SetOptions(merge: true));
 }
 
 Future updatePatData(String name, String phoneno) async {
-  final User user =  auth.currentUser;
+  final User user = auth.currentUser;
   return await FirebaseFirestore.instance
       .collection('patient')
       .doc(user.uid)
@@ -255,24 +254,29 @@ Future updatePatData(String name, String phoneno) async {
 
 String xuid = DateTime.now().millisecondsSinceEpoch.toString();
 Future updateAppointmentData(
-    String name, String time, String date, String drname) async {
+    String name, String time, String date, String drname, String druid) async {
   getUid();
-  String druid;
+  // String druid;
 
-  var result = await FirebaseFirestore.instance
-      .collection("users")
-      .where("name", isEqualTo: "$drname")
-      .where("user type", isEqualTo: "doctor")
-      .get();
+  // var result = await FirebaseFirestore.instance
+  //     .collection("users")
+  //     .where("name", isEqualTo: "${drname.trim()}")
+  //     .where("user type", isEqualTo: "doctor")
+  //     .get();
 
-  result.docs.forEach((res) {
-    druid = res.data()["uid"];
-  });
+  // result.docs.forEach((res) {
+  //   druid = res.data()["uid"];
+  // });
   if (druid != null) {
     return await FirebaseFirestore.instance
         .collection('doctor/$druid/patient log')
         .doc(xuid)
-        .set({'name': name, 'time': time, 'date': date, 'ptuid': auth.currentUser.uid}, SetOptions(merge: true));
+        .set({
+      'name': name,
+      'time': time,
+      'date': date,
+      'ptuid': auth.currentUser.uid,
+    }, SetOptions(merge: true));
   }
 }
 
@@ -310,47 +314,67 @@ Future updateAppointmentData(
 // }
 
 Future updateMyAppointment(
-    String name, String time, String date, String drname) async {
+    String name, String time, String date, String drname, String druid) async {
   getUid();
-  String druid;
+  //String druid;
 
-  var result = await FirebaseFirestore.instance
-      .collection("users")
-      .where("name", isEqualTo: "$drname")
-      .where("user type", isEqualTo: "doctor")
-      .get();
+  // var result = await FirebaseFirestore.instance
+  //     .collection("users")
+  //     .where("name", isEqualTo: "$drname")
+  //     .where("user type", isEqualTo: "doctor")
+  //     .get();
 
-  result.docs.forEach((res) {
-    druid = res.data()["uid"];
-  });
+  // result.docs.forEach((res) {
+  //   druid = res.data()["uid"];
+  // });
 
   if (druid != null) {
     return await FirebaseFirestore.instance
         .collection('patient/$ud/my appointment')
         .doc(xuid)
-        .set({'name': name, 'time': time, 'date': date, 'drname': drname, druid: druid},
-            SetOptions(merge: true));
+        .set({
+      'name': name,
+      'time': time,
+      'date': date,
+      'drname': drname,
+      'druid': druid
+    }, SetOptions(merge: true));
   }
 }
 
-Future updatePatientHistory(String history, String id) async {
-  final User user =  auth.currentUser;
+Future updatePatientHistory(String history, String id, String ptuid) async {
+  final User user = auth.currentUser;
+
+  await FirebaseFirestore.instance
+      .collection('patient')
+      .doc(ptuid)
+      .collection('my appointment')
+      .doc(id)
+      .set({'patient history': history}, SetOptions(merge: true));
+
   return await FirebaseFirestore.instance
       .collection('doctor')
       .doc(user.uid)
       .collection('patient log')
       .doc(id)
-      .set({'patient history': history},
-      SetOptions(merge: true));
+      .set({'patient history': history}, SetOptions(merge: true));
 }
 
-Future updateDiagnosis(String diagnosis, String id) async {
-  final User user =  auth.currentUser;
+Future updateDiagnosis(String diagnosis, String id, String ptuid) async {
+  final User user = auth.currentUser;
+
+  await FirebaseFirestore.instance
+      .collection('patient')
+      .doc(ptuid)
+      .collection('my appointment')
+      .doc(id)
+      .set({'diagnosis': diagnosis}, SetOptions(merge: true));
+
   return await FirebaseFirestore.instance
       .collection('doctor')
       .doc(user.uid)
       .collection('patient log')
       .doc(id)
-      .set({'diagnosis': diagnosis},
-      SetOptions(merge: true));
+      .set({'diagnosis': diagnosis}, SetOptions(merge: true));
 }
+

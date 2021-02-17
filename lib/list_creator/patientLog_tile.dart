@@ -1,4 +1,5 @@
-import 'package:doctor_here/screens/chat.dart';
+import 'package:doctor_here/screens/AppoinmentDetails.dart';
+//import 'package:doctor_here/screens/chat.dart';
 //import 'package:doctor_here/services/database.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/model/appointment.dart';
@@ -44,12 +45,7 @@ class PatientLogTile extends StatelessWidget {
               style: TextStyle(color: Colors.black)),
           onTap: () {
             print("${patientlog.name}");
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => Chat(
-            peerId: patientlog.ptuid,
-            peerName: patientlog.name)));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AppointmentDetails(appointment: patientlog)));
           },
         ),
       ),

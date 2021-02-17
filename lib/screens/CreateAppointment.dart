@@ -8,6 +8,7 @@ import 'package:gradient_app_bar/gradient_app_bar.dart';
 class CreateAppointment extends StatefulWidget {
   static String drname;
   static String timing;
+  static String druid;
   @override
   _CreateAppointmentState createState() => _CreateAppointmentState();
 }
@@ -206,13 +207,15 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                                   _nameController.text,
                                   "$hr:$min $mod",
                                   "$day/$month/${pickedDate.year}",
-                                  CreateAppointment.drname);
+                                  CreateAppointment.drname,
+                                  CreateAppointment.druid);
 
                               updateMyAppointment(
                                   _nameController.text,
                                   "$hr:$min $mod",
                                   "$day/$month/${pickedDate.year}",
-                                  CreateAppointment.drname);
+                                  CreateAppointment.drname,
+                                  CreateAppointment.druid);
 
                               Fluttertoast.showToast(
                                   msg: 'Appointment Booked',

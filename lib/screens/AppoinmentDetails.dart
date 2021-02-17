@@ -1,8 +1,10 @@
 import 'package:doctor_here/model/appointment.dart';
+import 'package:doctor_here/screens/chat.dart';
 import 'package:doctor_here/services/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 class AppointmentDetails extends StatelessWidget {
   final Appointment appointment;
@@ -11,13 +13,27 @@ class AppointmentDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appTitle = 'Form Validation Demo';
-
     return MaterialApp(
-      title: appTitle,
       home: Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text(appointment.name)),
+        appBar: GradientAppBar(
+          gradient:
+              LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
+          title: Text('Appointment Details'),
+          centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.chat),
+              onPressed: () {
+                print("search");
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Chat(
+                            peerId: appointment.ptuid,
+                            peerName: appointment.name)));
+              },
+            ),
+          ],
         ),
         body: MyCustomForm(appointment: appointment),
       ),
@@ -48,10 +64,11 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _diagnosisController = new TextEditingController(text: widget.appointment.diagnosis+"\n");
-    _historyController = new TextEditingController(text: widget.appointment.patientHistory+"\n");
+    _diagnosisController =
+        new TextEditingController(text: widget.appointment.diagnosis + "\n");
+    _historyController = new TextEditingController(
+        text: widget.appointment.patientHistory + "\n");
   }
 
   @override
@@ -88,79 +105,104 @@ class MyCustomFormState extends State<MyCustomForm> {
                         onPressed: () {
                           showModalBottomSheet<void>(
                             context: context,
+                            isScrollControlled: true,
                             builder: (BuildContext context) {
-                              return Container(
-                                height: 500,
-                                color: Colors.grey,
-                                child: Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      const Text('Edit Diagnosis'),
-                                      SafeArea(
-                                          child: Center(
-                                              child: Container(
-                                                  width: 320,
-                                                  padding: EdgeInsets.all(10.0),
-                                                  child: TextField(
-                                                    minLines: 7,
-                                                    maxLines: 10,
-                                                    autocorrect: true,
-                                                    controller: _diagnosisController,
-                                                    decoration: InputDecoration(
-                                                      hintText:
-                                                          'Type Text Here...',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      filled: true,
-                                                      fillColor: Colors.white70,
-                                                      enabledBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    12.0)),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.red,
-                                                            width: 2),
+                              return SingleChildScrollView(
+                                child: Container(
+                                  height: 600,
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
+                                  color: Colors.grey,
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        const Text('Edit Diagnosis'),
+                                        SafeArea(
+                                            child: Center(
+                                                child: Container(
+                                                    width: 320,
+                                                    padding:
+                                                        EdgeInsets.all(10.0),
+                                                    child: TextField(
+                                                      minLines: 7,
+                                                      maxLines: 10,
+                                                      autocorrect: true,
+                                                      controller:
+                                                          _diagnosisController,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintText:
+                                                            'Type Text Here...',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        filled: true,
+                                                        fillColor:
+                                                            Colors.white70,
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          12.0)),
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                      .red,
+                                                                  width: 2),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          10.0)),
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                      .red),
+                                                        ),
                                                       ),
-                                                      focusedBorder:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    10.0)),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.red),
-                                                      ),
-                                                    ),
-                                                  )))),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          ElevatedButton(
-                                            child: const Text('Submit'),
-                                            onPressed: () {
-                                              String diag = _diagnosisController.text;
-                                              updateDiagnosis(diag, widget.appointment.id);
-                                              Fluttertoast.showToast(
-                                                  msg: 'Updated',
-                                                  backgroundColor: Colors.white,
-                                                  textColor: Colors.black);
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                          SizedBox(
-                                            width: 20.0,
-                                          ),
-                                          ElevatedButton(
-                                            child: const Text('Cancel'),
-                                            onPressed: () => Navigator.pop(context),
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                                    )))),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ElevatedButton(
+                                              child: const Text('Submit'),
+                                              onPressed: () {
+                                                String diag =
+                                                    _diagnosisController.text;
+                                                updateDiagnosis(
+                                                    diag,
+                                                    widget.appointment.id,
+                                                    widget.appointment.ptuid);
+                                                Fluttertoast.showToast(
+                                                    msg: 'Updated',
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    textColor: Colors.black);
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            SizedBox(
+                                              width: 20.0,
+                                            ),
+                                            ElevatedButton(
+                                              child: const Text('Cancel'),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );
@@ -198,86 +240,115 @@ class MyCustomFormState extends State<MyCustomForm> {
                           ],
                         ),
                         onPressed: () {
-                          _historyController.value = TextEditingValue(text: widget.appointment.patientHistory);
+                          _historyController.value = TextEditingValue(
+                              text: widget.appointment.patientHistory);
                           showModalBottomSheet<void>(
                             context: context,
+                            isScrollControlled: true,
                             builder: (BuildContext context) {
-                              return Container(
-                                height: 500,
-                                color: Colors.grey,
-                                child: Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      const Text('Edit Patient History'),
-                                      SafeArea(
-                                          child: Center(
-                                              child: Container(
-                                                  width: 320,
-                                                  padding: EdgeInsets.all(10.0),
-                                                  child: TextField(
-                                                    minLines: 7,
-                                                    maxLines: 10,
-                                                    autocorrect: true,
-                                                    controller: _historyController,
-                                                    decoration: InputDecoration(
-                                                      hintText:
-                                                      'Type Text Here...',
-                                                      hintStyle: TextStyle(
-                                                          color: Colors.grey),
-                                                      filled: true,
-                                                      fillColor: Colors.white70,
-                                                      enabledBorder:
-                                                      OutlineInputBorder(
-                                                        borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                12.0)),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.red,
-                                                            width: 2),
+                              return SingleChildScrollView(
+                                child: Container(
+                                  height: 600,
+                                  padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom),
+                                  color: Colors.grey,
+                                  child: Center(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: <Widget>[
+                                        const Text('Edit Patient History'),
+                                        SafeArea(
+                                            child: Center(
+                                                child: Container(
+                                                    width: 320,
+                                                    padding:
+                                                        EdgeInsets.all(10.0),
+                                                    child: TextField(
+                                                      minLines: 7,
+                                                      maxLines: 10,
+                                                      autocorrect: true,
+                                                      controller:
+                                                          _historyController,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintText:
+                                                            'Type Text Here...',
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
+                                                        filled: true,
+                                                        fillColor:
+                                                            Colors.white70,
+                                                        enabledBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          12.0)),
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                      .red,
+                                                                  width: 2),
+                                                        ),
+                                                        focusedBorder:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          10.0)),
+                                                          borderSide:
+                                                              BorderSide(
+                                                                  color: Colors
+                                                                      .red),
+                                                        ),
                                                       ),
-                                                      focusedBorder:
-                                                      OutlineInputBorder(
-                                                        borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(
-                                                                10.0)),
-                                                        borderSide: BorderSide(
-                                                            color: Colors.red),
-                                                      ),
-                                                    ),
-                                                  )))),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          ElevatedButton(
-                                            child: const Text('Submit'),
-                                            onPressed: () {
-                                              String history = _historyController.text;
-                                              updatePatientHistory(history, widget.appointment.id);
-                                              Fluttertoast.showToast(
-                                                  msg: 'Updated',
-                                                  backgroundColor: Colors.white,
-                                                  textColor: Colors.black);
-                                              widget.appointment.patientHistory = history;
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                          SizedBox(
-                                            width: 20.0,
-                                          ),
-                                          ElevatedButton(
-                                            child: const Text('Cancel'),
-                                            onPressed: (){
-                                              _historyController.value = TextEditingValue(text: widget.appointment.patientHistory);
-                                              Navigator.pop(context);
-                                            },
-                                          ),
-                                        ],
-                                      )
-                                    ],
+                                                    )))),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ElevatedButton(
+                                              child: const Text('Submit'),
+                                              onPressed: () {
+                                                String history =
+                                                    _historyController.text;
+                                                updatePatientHistory(
+                                                    history,
+                                                    widget.appointment.id,
+                                                    widget.appointment.ptuid);
+                                                Fluttertoast.showToast(
+                                                    msg: 'Updated',
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                    textColor: Colors.black);
+                                                widget.appointment
+                                                    .patientHistory = history;
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            SizedBox(
+                                              width: 20.0,
+                                            ),
+                                            ElevatedButton(
+                                              child: const Text('Cancel'),
+                                              onPressed: () {
+                                                _historyController.value =
+                                                    TextEditingValue(
+                                                        text: widget.appointment
+                                                            .patientHistory);
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

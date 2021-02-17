@@ -6,6 +6,7 @@ class Clinic {
   final String phone;
   final String pincode;
   final String timing;
+  final String druid;
   Clinic(
       {this.drname,
       this.clinicname,
@@ -13,5 +14,6 @@ class Clinic {
       this.speciality,
       this.phone,
       this.pincode,
-      this.timing});
+      this.timing,
+      this.druid});
 }

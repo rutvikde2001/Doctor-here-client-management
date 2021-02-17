@@ -1,4 +1,5 @@
-import 'package:doctor_here/screens/chat.dart';
+import 'package:doctor_here/screens/PatAppointmentDetail.dart';
+//import 'package:doctor_here/screens/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/model/myappointment.dart';
 //import '../services/database.dart';
@@ -52,9 +53,7 @@ class MyAppointmentTile extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => Chat(
-            peerId: myappointment.druid,
-            peerName: "Dr. " + myappointment.drname)));
+                    builder: (context) => PatAppointmentDetails(myappointment)));
           },
         ),
       ),

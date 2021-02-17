@@ -1,40 +1,36 @@
-import 'package:doctor_here/screens/CreateAppointment.dart';
+import 'package:doctor_here/model/myappointment.dart';
+import 'package:doctor_here/screens/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
-class ClinicDetails extends StatelessWidget {
-  final String drname;
-  final String clinicname;
-  final String address;
-  final String speciality;
-  final String phone;
-  final String pincode;
-  final String timing;
-  final String druid;
+class PatAppointmentDetails extends StatelessWidget {
+  final MyAppointment appointment;
 
-  ClinicDetails(this.drname, this.clinicname, this.address, this.speciality,
-      this.phone, this.pincode, this.timing,this.druid);
+  PatAppointmentDetails(this.appointment);
 
   @override
   Widget build(BuildContext context) {
-    var x = drname.split(" ");
-    var y;
-    try {
-      y = x[0].substring(0, 1).toUpperCase() +
-          x[0].substring(1) +
-          " " +
-          x[1].substring(0, 1).toUpperCase() +
-          x[1].substring(1);
-    } catch (Expecption) {
-      y = x[0].substring(0, 1).toUpperCase() + x[0].substring(1);
-    }
-
     return Scaffold(
         backgroundColor: Colors.grey[200],
         appBar: GradientAppBar(
-          gradient: LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
-          title: Text('Clinic Details'),
+          gradient:
+              LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
+          title: Text('Appointment Details'),
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.chat),
+              onPressed: () {
+                print("search");
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Chat(
+                            peerId: appointment.druid,
+                            peerName: "Dr. " + appointment.drname)));
+              },
+            ),
+          ],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -51,7 +47,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    'Dr. ' + y,
+                    'Dr. ' + appointment.drname,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -61,7 +57,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 30.0),
                   Text(
-                    'SPECIALTY',
+                    'PATIENT NAME',
                     style: TextStyle(
                       color: Colors.grey,
                       letterSpacing: 2.0,
@@ -69,8 +65,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    speciality.substring(0, 1).toUpperCase() +
-                        speciality.substring(1),
+                    appointment.name,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -80,7 +75,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 30.0),
                   Text(
-                    'CLINIC NAME',
+                    'APPOINTMENT DATE',
                     style: TextStyle(
                       color: Colors.grey,
                       letterSpacing: 2.0,
@@ -88,8 +83,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    clinicname.substring(0, 1).toUpperCase() +
-                        clinicname.substring(1),
+                    appointment.date + " " + appointment.time,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -99,7 +93,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 30.0),
                   Text(
-                    'CLINIC ADDRESS',
+                    'DOCTOR\'S DIAGNOSIS',
                     style: TextStyle(
                       color: Colors.grey,
                       letterSpacing: 2.0,
@@ -107,7 +101,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    address,
+                    appointment.diagnosis,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -117,7 +111,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    'CLINIC TIMINGS',
+                    'PATIENT HISTORY',
                     style: TextStyle(
                       color: Colors.grey,
                       letterSpacing: 2.0,
@@ -125,7 +119,7 @@ class ClinicDetails extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    timing,
+                    appointment.patientHistory,
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -134,48 +128,6 @@ class ClinicDetails extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 50.0),
-                  Center(
-                    child: Container(
-                      margin: EdgeInsets.all(20.0),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Colors.blue[500], Colors.blue[900]],
-                          begin: FractionalOffset.centerLeft,
-                          end: FractionalOffset.centerRight,
-                        ),
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0),
-                            bottomLeft: Radius.circular(30.0),
-                            bottomRight: Radius.circular(30.0)),
-                      ),
-                      child: FlatButton(
-                        child: Row(
-                          children: [
-                            Text(
-                              'Create Appointment  ',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                        onPressed: () {
-                          CreateAppointment.drname = drname;
-                          CreateAppointment.druid = druid;
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CreateAppointment()));
-                        },
-                      ),
-                    ),
-                  ),
                 ]),
           ),
         ));

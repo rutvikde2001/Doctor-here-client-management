@@ -45,7 +45,8 @@ class ClinicTile extends StatelessWidget {
                         clinic.speciality,
                         clinic.phone,
                         clinic.pincode,
-                        clinic.timing)));
+                        clinic.timing,
+                        clinic.druid)));
           },
         ),
       ),
