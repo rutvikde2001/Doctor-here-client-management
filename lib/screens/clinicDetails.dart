@@ -8,7 +8,7 @@ class ClinicDetails extends StatelessWidget {
   final String address;
   final String speciality;
   final String phone;
-  final String pincode;
+  final int pincode;
   final String timing;
   final String druid;
 

@@ -220,7 +220,9 @@ class _CreateAppointmentState extends State<CreateAppointment> {
                               Fluttertoast.showToast(
                                   msg: 'Appointment Booked',
                                   backgroundColor: Colors.white,
-                                  textColor: Colors.black);
+                                  textColor: Colors.black,
+                                  gravity: ToastGravity.BOTTOM,
+                                  toastLength: Toast.LENGTH_LONG);
                               Navigator.pop(context);
                               Navigator.pop(context);
                               /*Scaffold.of(contxt).showSnackBar(SnackBar(

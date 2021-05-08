@@ -19,7 +19,7 @@ class Constants {
 
   static const List<String> choices = <String>[
     Location,
-    Notifications,
+    // Notifications,
     Settings
   ];
 }

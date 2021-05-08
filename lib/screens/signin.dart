@@ -70,7 +70,9 @@ class SignIn extends StatelessWidget {
           Fluttertoast.showToast(
               msg: 'Verification Failed',
               backgroundColor: Colors.black,
-              textColor: Colors.red);
+              textColor: Colors.red,
+              gravity: ToastGravity.BOTTOM,
+              toastLength: Toast.LENGTH_LONG);
           print(
               "$exception verification failed ${exception.code}. Message: ${exception.message}");
           AlertDialog(title: Text("Invalid verification code"));
@@ -140,7 +142,9 @@ class SignIn extends StatelessWidget {
           Fluttertoast.showToast(
               msg: 'Auto code retieval failed',
               backgroundColor: Colors.black,
-              textColor: Colors.red);
+              textColor: Colors.red,
+              gravity: ToastGravity.BOTTOM,
+              toastLength: Toast.LENGTH_LONG);
         });
   }
 
@@ -216,7 +220,7 @@ class SignIn extends StatelessWidget {
                   ),
                   onPressed: () {
                     print(_phoneController.text);
-                    final phone =  _phoneController.text.trim();
+                    final phone = _phoneController.text.trim();
 
                     loginUser(phone, context);
                   },

@@ -115,7 +115,7 @@ class ChatScreenState extends State<ChatScreen> {
 
   readLocal() async {
     prefs = await SharedPreferences.getInstance();
-    id = prefs.getString('uid') ?? '';
+    id = prefs.getString('uid') ?? 'X';
     if (prefs.getString('type') == 'patient') {
       groupChatId = '$peerId-$id';
     } else {
@@ -171,7 +171,12 @@ class ChatScreenState extends State<ChatScreen> {
       setState(() {
         isLoading = false;
       });
-      Fluttertoast.showToast(msg: 'This file is not an image');
+      Fluttertoast.showToast(
+          msg: 'This file is not an image',
+          backgroundColor: Colors.black,
+          textColor: Colors.red,
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_LONG);
     });
   }
 
@@ -204,7 +209,9 @@ class ChatScreenState extends State<ChatScreen> {
       Fluttertoast.showToast(
           msg: 'Nothing to send',
           backgroundColor: Colors.black,
-          textColor: Colors.red);
+          textColor: Colors.red,
+          gravity: ToastGravity.BOTTOM,
+          toastLength: Toast.LENGTH_LONG);
     }
   }
 
@@ -299,7 +306,6 @@ class ChatScreenState extends State<ChatScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
       );
     } else {
-      
       // Left (peer message)
       return Container(
         child: Column(

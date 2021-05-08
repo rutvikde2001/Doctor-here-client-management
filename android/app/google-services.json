@@ -23,6 +23,30 @@
           }
         },
         {
+          "client_id": "206308812215-f6lqp870v6r1lp3pcqnkf8et5ap95ae3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project404.doctor_here",
+            "certificate_hash": "5d90448612cd9f681e90e9ee55ff5a1ca40d2c63"
+          }
+        },
+        {
+          "client_id": "206308812215-pumdv4agfli1hti2ps8g950nc252o2u2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project404.doctor_here",
+            "certificate_hash": "3ff5eda96c384fad88c938f8ebefcc71b67f4c14"
+          }
+        },
+        {
+          "client_id": "206308812215-vbnc8b0eovtekqaapkc4b66h8snv8l0r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.project404.doctor_here",
+            "certificate_hash": "2e8f1449121dacf3be50807b5148c84849d1f6cd"
+          }
+        },
+        {
           "client_id": "206308812215-epoud979i28qqcf1sgj9e5n06fdr7so3.apps.googleusercontent.com",
           "client_type": 3
         }

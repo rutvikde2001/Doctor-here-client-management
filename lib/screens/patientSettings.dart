@@ -66,7 +66,7 @@ class PatSetting extends StatelessWidget {
                       color: Colors.white,
                     ),
                     title: Text("Log Out"),
-                    trailing: Icon(Icons.first_page),
+                    trailing: Icon(Icons.logout),
                     onTap: () {
                       // About Developer Info
                       signOutGoogle();

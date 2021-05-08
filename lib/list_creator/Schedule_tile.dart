@@ -20,9 +20,7 @@ class ScheduleTile extends StatelessWidget {
             leading: CircleAvatar(
               radius: 25.0,
               backgroundColor: Colors.blueGrey,
-              child: Text("",
-                  style: TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold)),
+              child: Icon(Icons.person,color: Colors.white,),
             ),
             title: Text('Time: ' + schedule.time + ' Date:' + date,
                 style: TextStyle(color: Colors.black)),
@@ -36,8 +34,8 @@ class ScheduleTile extends StatelessWidget {
       );
     } else {
       return Container(
-        width: 1,
-        height: 1,
+        width: 0,
+        height: 0,
       );
     }
   }

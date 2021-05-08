@@ -7,8 +7,10 @@ import 'package:doctor_here/model/schedule.dart';
 import 'package:doctor_here/model/user.dart';
 import 'package:doctor_here/model/ambulance.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_storage/get_storage.dart';
 
 String ud, druid;
+
 getUid() async {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final User user = auth.currentUser;
@@ -44,6 +46,7 @@ getPatUid(String ptname) async {
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
+  int pincode = 0;
 
   // Collection reference
   // final CollectionReference appointmentCollection =
@@ -87,6 +90,7 @@ class DatabaseService {
     getUid();
     return FirebaseFirestore.instance
         .collection('doctor/$ud/patient log')
+        .orderBy('date')
         .snapshots()
         .map(_appointmentListFromSnapshot);
   }
@@ -104,9 +108,13 @@ class DatabaseService {
   // Get brews stream
   Stream<List<Schedule>> get schedule {
     getUid();
+    // var now = DateTime.now();
+    // String today = DateFormat('dd/MM/yyyy').format(now);
+    // print(today);
     if (druid != null) {
       return FirebaseFirestore.instance
           .collection('doctor/$druid/patient log')
+          //.where('date', isEqualTo: today)
           .snapshots()
           .map(_scheduleListFromSnapshot);
     }
@@ -161,7 +169,13 @@ class DatabaseService {
   }
 
   Stream<List<Ambulance>> get ambulance {
-    return ambulanceCollection.snapshots().map(_ambulanceListFromSnapshot);
+    final pin = GetStorage();
+    pincode = pin.read('pincode');
+    return ambulanceCollection
+        .where("pincode", isLessThan: (pincode + 6))
+        .where("pincode", isGreaterThan: (pincode - 6))
+        .snapshots()
+        .map(_ambulanceListFromSnapshot);
   }
 
   List<Clinic> _clinicListFromSnapshot(QuerySnapshot snapshot) {
@@ -169,7 +183,7 @@ class DatabaseService {
       return Clinic(
           drname: doc.data()['name'] ?? 'XYZ',
           phone: doc.data()['contact no'] ?? '0000000000',
-          pincode: doc.data()['pincode'] ?? '400000',
+          pincode: doc.data()['pincode'] ?? 400000,
           clinicname: doc.data()['clinic name'] ?? 'ABC',
           address: doc.data()['clinic address'] ?? 'x,y,z',
           speciality: doc.data()['speciality'] ?? 'doctor',
@@ -179,7 +193,15 @@ class DatabaseService {
   }
 
   Stream<List<Clinic>> get clinic {
-    return clinicCollection.snapshots().map(_clinicListFromSnapshot);
+    final pin = GetStorage();
+    pincode = pin.read('pincode');
+    //print(pincode);
+    return clinicCollection
+        .where("ispending", isEqualTo: false)
+        .where("pincode", isLessThan: (pincode + 4))
+        .where("pincode", isGreaterThan: (pincode - 4))
+        .snapshots()
+        .map(_clinicListFromSnapshot);
   }
 
   List<Pharmacies> _pharmaciesListFromSnapshot(QuerySnapshot snapshot) {
@@ -194,7 +216,13 @@ class DatabaseService {
   }
 
   Stream<List<Pharmacies>> get pharmacies {
-    return pharmaciesCollection.snapshots().map(_pharmaciesListFromSnapshot);
+    final pin = GetStorage();
+    pincode = pin.read('pincode');
+    return pharmaciesCollection
+        .where("pincode", isLessThan: (pincode + 4))
+        .where("pincode", isGreaterThan: (pincode - 4))
+        .snapshots()
+        .map(_pharmaciesListFromSnapshot);
   }
 }
 
@@ -229,7 +257,7 @@ Future<String> userTypeCheck() async {
 }
 
 Future updateDocData(String name, String phoneno, String speciality,
-    String clinicName, String clinicAdd, String clinicTime) async {
+    String clinicName, String clinicAdd, int pincode, String clinicTime) async {
   final User user = auth.currentUser;
   return await FirebaseFirestore.instance
       .collection('doctor')
@@ -241,6 +269,8 @@ Future updateDocData(String name, String phoneno, String speciality,
     'clinic name': clinicName,
     'clinic address': clinicAdd,
     'clinic timing': clinicTime,
+    'pincode': pincode,
+    'ispending': true
   }, SetOptions(merge: true));
 }
 
@@ -314,7 +344,7 @@ Future updateAppointmentData(
 // }
 
 Future updateMyAppointment(
-    String name, String time, String date, String drname, String druid) async {
+    String name, String time, String date, String drname, String drid) async {
   getUid();
   //String druid;
 
@@ -328,7 +358,7 @@ Future updateMyAppointment(
   //   druid = res.data()["uid"];
   // });
 
-  if (druid != null) {
+  if (drid != null) {
     return await FirebaseFirestore.instance
         .collection('patient/$ud/my appointment')
         .doc(xuid)
@@ -337,7 +367,7 @@ Future updateMyAppointment(
       'time': time,
       'date': date,
       'drname': drname,
-      'druid': druid
+      'druid': drid
     }, SetOptions(merge: true));
   }
 }
@@ -377,4 +407,3 @@ Future updateDiagnosis(String diagnosis, String id, String ptuid) async {
       .doc(id)
       .set({'diagnosis': diagnosis}, SetOptions(merge: true));
 }
-

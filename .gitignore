@@ -99,6 +99,9 @@ proguard/
 # Android Studio Navigation editor temp files
 .navigation/
 
+.vscode/
+.flutter-plugins-dependencies
+
 # Android Studio captures folder
 captures/
 

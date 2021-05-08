@@ -12,17 +12,17 @@ class ScheduleAppointment extends StatefulWidget {
 
 class _ScheduleAppointmentPage extends State<ScheduleAppointment> {
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Check Appointment Availability',
-        home: StreamProvider<List<Schedule>>.value(
-            value: DatabaseService().schedule,
-            child: Scaffold(
-                backgroundColor: Colors.grey[200],
-                appBar: GradientAppBar(
-                  gradient: LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
-                  title: Text('Check Appointment Availability'),
-                  centerTitle: true,
-                ),
-                body: ScheduleList())));
+
+    return StreamProvider<List<Schedule>>.value(
+        value: DatabaseService().schedule,
+        child: Scaffold(
+            backgroundColor: Colors.grey[200],
+            appBar: GradientAppBar(
+              gradient:
+                  LinearGradient(colors: [Colors.blue[900], Colors.blue[500]]),
+              title: Text('Appointment Availability'),
+              centerTitle: true,
+            ),
+            body: ScheduleList()));
   }
 }

@@ -2,6 +2,7 @@ import 'package:doctor_here/model/user.dart';
 import 'package:doctor_here/screens/doctorHome.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/services/database.dart';
@@ -17,6 +18,7 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
   final _clinicName = TextEditingController();
   final _specialty = TextEditingController();
   final _clinicAddress = TextEditingController();
+  final _pincode = TextEditingController();
   //final _clinicTimings = TextEditingController();
 
   TimeOfDay time;
@@ -146,10 +148,17 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
                       child: Text(t2),
                       color: Colors.grey,
                       onPressed: () async {
-                       t2 = await _pickTime();
+                        t2 = await _pickTime();
                       },
                     ),
                   ],
+                ),
+                SizedBox(height: 20.0),
+                TextFormField(
+                  controller: _pincode,
+                  keyboardType: TextInputType.number,
+                  decoration:
+                      InputDecoration(labelText: 'Enter Clinic Pincode'),
                 ),
                 SizedBox(
                   height: 40,
@@ -174,26 +183,48 @@ class _MoreInfoDocState extends State<MoreInfoDoc> {
                       color: Colors.white,
                     ),
                     onPressed: () async {
-                      UserData(name: _nameController.text);
-                      FirebaseAuth _auth = FirebaseAuth.instance;
-                      User us =  _auth.currentUser;
-                      await updateUserData(_nameController.text, "doctor")
-                          .then((value) async {
-                        await updateDocData(
-                                _nameController.text,
-                                _phoneController.text,
-                                _specialty.text,
-                                _clinicName.text,
-                                _clinicAddress.text,
-                                t1 + " - " + t2)
-                            .then((value) {
-                              logininfo(us.uid, "doctor");
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DrHome()));
+                      if (_nameController.text != null &&
+                          _phoneController.text != null &&
+                          _specialty.text != null &&
+                          _clinicName.text != null &&
+                          _clinicAddress.text != null &&
+                          _pincode.text != null) {
+                        UserData(name: _nameController.text);
+                        FirebaseAuth _auth = FirebaseAuth.instance;
+                        User us = _auth.currentUser;
+                        await updateUserData(_nameController.text, "doctor")
+                            .then((value) async {
+                          await updateDocData(
+                                  _nameController.text,
+                                  _phoneController.text,
+                                  _specialty.text,
+                                  _clinicName.text,
+                                  _clinicAddress.text,
+                                  int.parse(_pincode.text),
+                                  t1 + " - " + t2)
+                              .then((value) {
+                            logininfo(us.uid, "doctor");  
+                            Fluttertoast.showToast(
+                                msg: 'Data Recored. \nStatus:In Review\nAccount will be verified soon...',
+                                backgroundColor: Colors.black,
+                                textColor: Colors.white,
+                                gravity: ToastGravity.BOTTOM,
+                                toastLength: Toast.LENGTH_LONG);
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DrHome()));
+                          });
                         });
-                      });
+                      }
+                      else{
+                        Fluttertoast.showToast(
+                                msg: 'Please Enter All Details',
+                                backgroundColor: Colors.black,
+                                textColor: Colors.red,
+                                gravity: ToastGravity.BOTTOM,
+                                toastLength: Toast.LENGTH_LONG);
+                      }
                     },
                   ),
                 ),

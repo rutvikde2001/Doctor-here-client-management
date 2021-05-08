@@ -1,3 +1,4 @@
+import 'package:doctor_here/screens/Register/MoreinfoDoc.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,10 @@ class DrSetting extends StatelessWidget {
               trailing: Icon(Icons.edit),
               onTap: () {
                 print('edit');
+                Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MoreInfoDoc()));
               })),
       const SizedBox(height: 8.00),
       Card(
@@ -51,7 +56,7 @@ class DrSetting extends StatelessWidget {
                 color: Colors.white,
               ),
               title: Text("Log Out"),
-              trailing: Icon(Icons.first_page),
+              trailing: Icon(Icons.logout),
               onTap: () {
                 // About Developer Info
                 signOutGoogle();
