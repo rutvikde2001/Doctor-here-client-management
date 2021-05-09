@@ -12,6 +12,10 @@
 .history
 .svn/
 
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec.lock
+
 # IntelliJ related
 *.iml
 *.ipr
