@@ -1,4 +1,5 @@
 import 'package:doctor_here/screens/Register/MoreinfoPat.dart';
+import 'package:doctor_here/screens/aboutDev.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/services/auth.dart';
@@ -39,9 +40,9 @@ class PatSetting extends StatelessWidget {
                     onTap: () {
                       //print('edit');
                       Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MoreInfoUser()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MoreInfoUser()));
                     })),
             const SizedBox(height: 8.00),
             Card(
@@ -54,9 +55,11 @@ class PatSetting extends StatelessWidget {
                       color: Colors.white,
                     ),
                     title: Text("About Developers"),
-                    trailing: Icon(Icons.keyboard_arrow_right),
+                    trailing: Icon(Icons.app_registration),
                     onTap: () {
                       // About Developer Info
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AboutDev()));
                     },
                   )
                 ])),
@@ -66,22 +69,21 @@ class PatSetting extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.00)),
                 child: Column(children: <Widget>[
                   ListTile(
-                    leading: Icon(
-                      Icons.info_outline,
-                      color: Colors.white,
-                    ),
-                    title: Text("Log Out"),
-                    trailing: Icon(Icons.logout),
-                    onTap: () {
-                      // About Developer Info
-                      signOutGoogle();
-                              signOut();
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SignIn()));
-                    },
-                  )
+                      leading: Icon(
+                        Icons.info_outline,
+                        color: Colors.white,
+                      ),
+                      title: Text("Log Out"),
+                      trailing: Icon(Icons.logout),
+                      onTap: () {
+                        // About Developer Info
+                        signOutGoogle();
+                        signOut();
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignIn()),
+                            (Route<dynamic> route) => false);
+                      })
                 ]))
           ])),
     );

@@ -34,18 +34,18 @@ class _MyDrHomePage extends State<DrHome> {
               title: Text('Doctor Here'),
               centerTitle: true,
               actions: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.search_outlined,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    print("search");
-                    //   signOutGoogle();
-                    //   Navigator.pushReplacement(context,
-                    //       MaterialPageRoute(builder: (context) => SignIn()));
-                  },
-                ),
+                // IconButton(
+                //   icon: Icon(
+                //     Icons.search_outlined,
+                //     color: Colors.white,
+                //   ),
+                //   onPressed: () {
+                //     print("search");
+                //     //   signOutGoogle();
+                //     //   Navigator.pushReplacement(context,
+                //     //       MaterialPageRoute(builder: (context) => SignIn()));
+                //   },
+                // ),
                 IconButton(icon: Icon(Icons.settings), onPressed: () {
                   Navigator.push(context,
                            MaterialPageRoute(builder: (context) => DrSetting()));
