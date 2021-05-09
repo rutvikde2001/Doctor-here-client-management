@@ -9,6 +9,7 @@ import 'package:doctor_here/model/myappointment.dart';
 import 'package:doctor_here/model/pharmacies.dart';
 import 'package:doctor_here/screens/Location.dart';
 import 'package:doctor_here/screens/patientSettings.dart';
+import 'package:doctor_here/screens/search.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
@@ -62,7 +63,11 @@ class _MyPtHomePage extends State<PtHome> {
                         IconButton(
                           icon: Icon(Icons.search),
                           onPressed: () {
-                            print("search");
+                            //print("search");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Search()));
                           },
                         ),
                         PopupMenuButton<String>(

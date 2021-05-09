@@ -1,3 +1,4 @@
+import 'package:doctor_here/screens/Register/MoreinfoPat.dart';
 import 'package:flutter/material.dart';
 import 'package:doctor_here/screens/signin.dart';
 import 'package:doctor_here/services/auth.dart';
@@ -36,7 +37,11 @@ class PatSetting extends StatelessWidget {
                         )),
                     trailing: Icon(Icons.edit),
                     onTap: () {
-                      print('edit');
+                      //print('edit');
+                      Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MoreInfoUser()));
                     })),
             const SizedBox(height: 8.00),
             Card(

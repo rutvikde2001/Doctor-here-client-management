@@ -204,6 +204,14 @@ class DatabaseService {
         .map(_clinicListFromSnapshot);
   }
 
+  Stream<List<Clinic>> get search {
+    //print(pincode);
+    return FirebaseFirestore.instance
+        .collection('doctor')
+        .snapshots()
+        .map(_clinicListFromSnapshot);
+  }
+
   List<Pharmacies> _pharmaciesListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.docs.map((doc) {
       return Pharmacies(
