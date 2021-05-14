@@ -18,7 +18,7 @@ class SearchTile extends StatelessWidget {
     } catch (Exception) {
       n = name[0].substring(0, 1);
     }
-    if(clinic.drname.toLowerCase().startsWith(nx.toLowerCase())) {
+    if (clinic.drname.toLowerCase().startsWith(nx.toLowerCase())) {
       return Padding(
         padding: EdgeInsets.only(top: 8.0),
         child: Card(

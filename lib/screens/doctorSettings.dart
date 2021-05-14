@@ -82,8 +82,10 @@ class DrSetting extends StatelessWidget {
                         // About Developer Info
                         signOutGoogle();
                         signOut();
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignIn()),
+                            (Route<dynamic> route) => false);
                       },
                     )
                   ]))

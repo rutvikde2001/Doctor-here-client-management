@@ -208,6 +208,7 @@ class DatabaseService {
     //print(pincode);
     return FirebaseFirestore.instance
         .collection('doctor')
+        .where("ispending", isEqualTo: false)
         .snapshots()
         .map(_clinicListFromSnapshot);
   }
